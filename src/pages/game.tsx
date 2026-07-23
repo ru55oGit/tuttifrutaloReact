@@ -11,6 +11,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Layout from "../components/Layout";
 import VirtualKeyboard from "../components/VirtualKeyboard";
+import { useIsMobile } from "../hooks/useIsMobile";
 import { useLanguage } from "../i18n/LanguageContext";
 import { CATEGORIES, Category, isValidAnswer } from "../data/categoryWords";
 import { drawRandomLetter, scoreRound, RoundResult, PLAYABLE_LETTERS } from "../utils/tuttiEngine";
@@ -44,6 +45,7 @@ const emptyAnswers = (): Record<Category, string> =>
 export default function Game() {
   const navigate = useNavigate();
   const { t, currentLanguage } = useLanguage();
+  const isMobile = useIsMobile();
 
   const [phase, setPhase] = useState<Phase>("config");
   const [duration, setDuration] = useState(60);
@@ -328,7 +330,7 @@ export default function Game() {
           </Box>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pb: 8 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pb: isMobile ? 32 : 8 }}>
           {CATEGORIES.map((category) => {
             const isInvalid = invalidFields.has(category);
             return (
@@ -361,9 +363,16 @@ export default function Game() {
                 <InputBase
                   value={answers[category]}
                   onChange={(e) => handleAnswerChange(category, e.target.value.toUpperCase())}
-                  onFocus={() => setFocusedCategory(category)}
+                  onFocus={(e) => {
+                    setFocusedCategory(category);
+                    if (isMobile) {
+                      setTimeout(() => e.target.scrollIntoView({ block: "center", behavior: "smooth" }), 250);
+                    }
+                  }}
                   onBlur={() => handleFieldBlur(category)}
                   autoComplete="off"
+                  readOnly={isMobile}
+                  inputProps={{ inputMode: isMobile ? "none" : "text" }}
                   sx={{ flex: 1, px: 1.5, py: 1.5, fontSize: 16, fontWeight: 700, color: isInvalid ? "#ef4444" : ACCENT }}
                 />
               </Box>
