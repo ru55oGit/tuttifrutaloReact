@@ -1,0 +1,26 @@
+import { WordsByLetter } from "./types";
+
+export const PAIS_WORDS: WordsByLetter = {
+  A: ["Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Anguila", "Antigua y Barbuda", "Arabia Saudí", "Argelia", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaiyán"],
+  B: ["Bahamas", "Bahréin", "Bangladés", "Bangladesh", "Barbados", "Bélgica", "Belice", "Benín", "Bermudas", "Bielorrusia", "Birmania (Myanmar)", "Bolivia", "Bonaire", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután"],
+  C: ["Cabo Verde", "Camboya", "Camerún", "Canadá", "Ceuta y Melilla", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Curazao"],
+  D: ["Diego García", "Dinamarca", "Dominica"],
+  E: ["Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Escocia", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini", "Etiopía"],
+  F: ["Filipinas", "Finlandia", "Fiyi", "Francia"],
+  G: ["Gabón", "Gales", "Gambia", "Georgia", "Ghana", "Gibraltar", "Granada", "Grecia", "Groenlandia", "Guadalupe", "Guam", "Guatemala", "Guayana Francesa", "Guernsey", "Guinea", "Guinea Ecuatorial", "Guinea-Bisau", "Guyana"],
+  H: ["Haití", "Holanda", "Honduras", "Hong Kong", "Hungría"],
+  I: ["India", "Indonesia", "Inglaterra", "Irak", "Irán", "Irlanda", "Isla de Man", "Isla de Navidad", "Isla Norfolk", "Islandia", "Islas Åland", "Islas Caimán", "Islas Canarias", "Islas Cocos (Keeling)", "Islas Cook", "Islas Feroe", "Islas Marianas del Norte", "Islas Marshall", "Islas Salomón", "Islas Turcas y Caicos", "Islas Vírgenes Británicas", "Islas Vírgenes de EE.UU.", "Israel", "Italia"],
+  J: ["Jamaica", "Japón", "Jersey", "Jordania"],
+  L: ["Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo"],
+  M: ["Macao", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Martinica", "Mauricio", "Mauritania", "Mayotte", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Montserrat", "Mozambique"],
+  N: ["Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Niue", "Noruega", "Nueva Caledonia", "Nueva Zelanda"],
+  O: ["Omán"],
+  P: ["Países Bajos", "Pakistán", "Palaos", "Palestina", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Pitcairn", "Polinesia Francesa", "Polonia", "Portugal", "Puerto Rico"],
+  R: ["Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Reunión", "Ruanda", "Rumania", "Rusia"],
+  S: ["Sáhara Occidental", "Samoa", "Samoa Americana", "San Bartolomé", "San Cristóbal y Nieves", "San Marino", "San Martín", "San Pedro y Miquelón", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Sark", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Sint Maarten", "Siria", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam"],
+  T: ["Tailandia", "Taiwán", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tokelau", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu"],
+  U: ["Ucrania", "Uganda", "Uruguay", "Uzbekistán"],
+  V: ["Vanuatu", "Venezuela", "Vietnam"],
+  Y: ["Yemen", "Yibuti"],
+  Z: ["Zambia", "Zimbabue"],
+};

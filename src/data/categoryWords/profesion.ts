@@ -1,0 +1,25 @@
+import { WordsByLetter } from "./types";
+
+export const PROFESION_WORDS: WordsByLetter = {
+  A: ["Abogado", "Arquitecto", "Actor", "Albañil", "Astronauta", "Auditor", "Artesano", "Apicultor", "Agricultor", "Animador", "Afilador", "Antropólogo", "Administrador", "Astrónomo", "Agrónomo", "Actuario", "Actriz", "Agente inmobiliario", "Arqueólogo", "Asesor empresarial", "Asesor de imagen", "Ambientalista"],
+  B: ["Bombero", "Bibliotecario", "Biólogo", "Barrendero", "Barbero", "Botánico", "Bailarín"],
+  C: ["Cocinero", "Contador", "Carpintero", "Chofer", "Cirujano", "Cerrajero", "Camarero", "Cajero", "Carnicero", "Calígrafo", "Cardiólogo", "Cantante", "Cazador", "Chef", "Criminólogo", "Climatólogo"],
+  D: ["Diseñador", "Dentista", "Doctor", "Desarrollador web", "Dermatólogo", "Decorador", "Deportista", "Diseñador de modas"],
+  E: ["Enfermero", "Electricista", "Escritor", "Economista", "Escultor", "Editor", "Empresario", "Entrenador", "Estilista"],
+  F: ["Farmacéutico", "Fotógrafo", "Fontanero", "Frutero", "Fumigador", "Filólogo", "Físico", "Farmacólogo", "Fonoaudiólogo", "Filósofo", "Florista", "Floricultor"],
+  G: ["Guía", "Gasista", "Guardia", "Granjero", "Geógrafo", "Guardabosques", "Ginecólogo", "Ganadero", "Gestor"],
+  H: ["Herrero", "Historiador"],
+  I: ["Ingeniero", "Instructor", "Imprentero", "Informático", "Ingeniero civil", "Ingeniero industrial", "Ingeniero naval"],
+  J: ["Jardinero", "Juez", "Joyero"],
+  L: ["Lingüista", "Lechero", "Lavandero", "Leñador", "Lutier"],
+  M: ["Médico", "Maestro", "Mecánico", "Músico", "Modista", "Matemático", "Meteorólogo", "Militar", "Minero", "Mercadólogo"],
+  N: ["Notario", "Niñera", "Neonatólogo", "Nutriólogo"],
+  O: ["Odontólogo", "Obrero", "Oculista", "Oftalmólogo", "Óptico", "Obstetra", "Oficinista", "Operario"],
+  P: ["Profesor", "Piloto", "Pintor", "Periodista", "Peluquero", "Psicólogo", "Plomero", "Pescador", "Panadero", "Peletero", "Pastor", "Paleontólogo", "Politólogo", "Paramédico", "Psicoanalista", "Pastelero", "Programador", "Publicista", "Político", "Podólogo", "Pediatra"],
+  R: ["Recepcionista", "Repartidor", "Relojero", "Radiólogo"],
+  S: ["Sastre", "Secretaria", "Soldador", "Sociólogo"],
+  T: ["Traductor", "Taxista", "Técnico", "Transportista", "Telefonista", "Trabajador social"],
+  U: ["Urbanista"],
+  V: ["Veterinario", "Vendedor", "Vigilante"],
+  Z: ["Zapatero"],
+};
