@@ -11,7 +11,7 @@ export const PROFESION_WORDS: WordsByLetter = {
   H: ["Herrero", "Historiador", "Helicicultura", "Higienista", "Homeópata"],
   I: ["Ingeniero", "Instructor", "Imprentero", "Informático", "Ingeniero civil", "Ingeniero industrial", "Ingeniero naval", "Ilustrador", "Ingeniero de sistemas", "Ingeniero de software", "Ingeniero electromecánico", "Ingeniero mecánico"],
   J: ["Jardinero", "Juez", "Joyero", "Jugador profesional"],
-  L: ["Lingüista", "Lechero", "Lavandero", "Leñador", "Lutier", "Limpiador", "Logopeda", "Lexicógrafo"],
+  L: ["Lingüista", "Lechero", "Lavandero", "Leñador", "Lutier", "Limpiador", "Logopeda", "Lexicógrafo", "Labrador"],
   M: ["Médico", "Maestro", "Mecánico", "Músico", "Modista", "Matemático", "Meteorólogo", "Militar", "Minero", "Mercadólogo", "Manicurista", "Maquetador", "Masajista", "Maquillador", "Modelo"],
   N: ["Notario", "Niñera", "Neonatólogo", "Nutriólogo", "Naturópata", "Nefrólogo", "Nutricionista"],
   O: ["Odontólogo", "Obrero", "Oculista", "Oftalmólogo", "Óptico", "Obstetra", "Oficinista", "Operario", "Oncólogo", "Optometrista", "Organizador de eventos", "Osteópata"],
