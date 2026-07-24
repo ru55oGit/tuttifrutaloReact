@@ -37,6 +37,7 @@ export interface Translation {
   // Game — results phase
   resultsTitle: string;
   totalScoreLabel: string;
+  timeBonusLabel: (bonus: number) => string;
   alternativesLabel: (count: number) => string;
   sampleAlternativesLabel: (words: string[]) => string;
   playAgainButton: string;
@@ -79,7 +80,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     durationTitle: "Duración de la ronda",
     durationLabel: "segundos",
     scoringTitle: "¿Cómo se puntúa?",
-    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman.",
+    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman. Además, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra, proporcional al tiempo restante.",
     startButton: "¡Empezar!",
 
     categoryLabels: {
@@ -95,6 +96,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
 
     resultsTitle: "Resultados",
     totalScoreLabel: "Puntaje total",
+    timeBonusLabel: (bonus) => `incluye +${bonus} de bonus por tiempo`,
     alternativesLabel: (count) => (count === 1 ? "había 1 alternativa válida" : `había ${count} alternativas válidas`),
     sampleAlternativesLabel: (words) => `por ejemplo: ${words.join(", ")}`,
     playAgainButton: "Jugar de nuevo",

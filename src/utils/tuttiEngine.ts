@@ -28,11 +28,24 @@ export interface CategoryResult {
 export interface RoundResult {
   letter: string;
   results: CategoryResult[];
+  timeBonus: number;
   totalScore: number;
 }
 
 const POINTS_VALID = 10;
 const POINTS_INVALID_OR_EMPTY = 0;
+
+// Bonus por terminar antes de tiempo. Se calcula como proporción del tiempo
+// restante (no segundos crudos) para que sea igual de "difícil" de lograr
+// con cualquiera de las duraciones elegibles (60s o 90s): apretar BASTA a
+// mitad de reloj da el mismo bonus con cualquier duración.
+export const MAX_TIME_BONUS = 30;
+
+export function calculateTimeBonus(timeLeft: number, duration: number): number {
+  if (duration <= 0) return 0;
+  const ratio = Math.max(0, Math.min(1, timeLeft / duration));
+  return Math.round(ratio * MAX_TIME_BONUS);
+}
 
 function buildResult(
   category: Category,
@@ -57,7 +70,12 @@ function buildResult(
   };
 }
 
-export function scoreRound(letter: string, answers: Record<Category, string>): RoundResult {
+export function scoreRound(
+  letter: string,
+  answers: Record<Category, string>,
+  timeLeft: number,
+  duration: number
+): RoundResult {
   // "Cosa" valida contra el diccionario genérico (miles de alternativas
   // reales), pero mostrar ese número al lado de las 2-20 alternativas de
   // las otras categorías queda raro. Se limita al máximo real de las demás
@@ -72,7 +90,8 @@ export function scoreRound(letter: string, answers: Record<Category, string>): R
     return buildResult(category, letter, answer, alternativesCount, sampleAlternatives);
   });
 
-  const totalScore = results.reduce((sum, r) => sum + r.points, 0);
+  const timeBonus = calculateTimeBonus(timeLeft, duration);
+  const totalScore = results.reduce((sum, r) => sum + r.points, 0) + timeBonus;
 
-  return { letter, results, totalScore };
+  return { letter, results, timeBonus, totalScore };
 }

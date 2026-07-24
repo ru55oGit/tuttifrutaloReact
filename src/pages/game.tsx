@@ -62,6 +62,8 @@ export default function Game() {
   answersRef.current = answers;
   const letterRef = useRef(letter);
   letterRef.current = letter;
+  const timeLeftRef = useRef(timeLeft);
+  timeLeftRef.current = timeLeft;
 
   useEffect(() => {
     if (phase !== "playing") return;
@@ -70,7 +72,7 @@ export default function Game() {
       setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(tick);
-          finishRound();
+          finishRound(0);
           return 0;
         }
         return prev - 1;
@@ -81,8 +83,8 @@ export default function Game() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  function finishRound() {
-    const result = scoreRound(letterRef.current, answersRef.current);
+  function finishRound(finalTimeLeft: number = timeLeftRef.current) {
+    const result = scoreRound(letterRef.current, answersRef.current, finalTimeLeft, duration);
     setRoundResult(result);
     const words = result.results.filter((r) => r.answer).map((r) => r.answer);
     const saved = maybeSaveBestScore(currentLanguage, result.totalScore, letterRef.current, words);
@@ -246,6 +248,11 @@ export default function Game() {
           <Box sx={{ backgroundColor: "#fff", borderRadius: "16px", p: 2, textAlign: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
             <Typography sx={{ fontSize: 14, color: "#888", fontWeight: 700, textTransform: "uppercase" }}>{t.totalScoreLabel}</Typography>
             <Typography sx={{ fontSize: 48, fontWeight: 800, color: ACCENT, lineHeight: 1 }}>{roundResult.totalScore}</Typography>
+            {roundResult.timeBonus > 0 && (
+              <Typography sx={{ fontSize: 13, color: "#22c55e", fontWeight: 700, mt: 0.5 }}>
+                {t.timeBonusLabel(roundResult.timeBonus)}
+              </Typography>
+            )}
             {isNewRecord && <Typography sx={{ fontSize: 14, color: "#22c55e", fontWeight: 800, mt: 0.5 }}>🏆 {t.recordTitle}!</Typography>}
           </Box>
 
@@ -381,7 +388,7 @@ export default function Game() {
         </Box>
 
         <Button
-          onClick={finishRound}
+          onClick={() => finishRound()}
           variant="contained"
           sx={{
             backgroundColor: "#fff",
