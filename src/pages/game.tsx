@@ -16,6 +16,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { CATEGORIES, Category, isValidAnswer } from "../data/categoryWords";
 import { drawRandomLetter, scoreRound, RoundResult, PLAYABLE_LETTERS } from "../utils/tuttiEngine";
 import { maybeSaveBestScore } from "../utils/tuttiRecordState";
+import { recordLastPlayed } from "../utils/lastPlayedState";
 
 function playErrorSound() {
   try {
@@ -93,6 +94,7 @@ export default function Game() {
   }
 
   function startRound() {
+    recordLastPlayed();
     setLetter(selectedLetter);
     setAnswers(emptyAnswers());
     setTimeLeft(duration);

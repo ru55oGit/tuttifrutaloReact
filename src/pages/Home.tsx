@@ -7,6 +7,7 @@ import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import Layout from "../components/Layout";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getBestScore, BestScore } from "../utils/tuttiRecordState";
+import { getDaysSinceLastPlayed } from "../utils/lastPlayedState";
 import { Category } from "../data/categoryWords";
 
 const ACCENT = "#e74c3c";
@@ -31,25 +32,32 @@ export default function Home() {
     return () => window.removeEventListener("focus", readRecord);
   }, [currentLanguage]);
 
+  const daysSincePlayed = getDaysSinceLastPlayed();
   const nowHour = new Date().getHours();
-  const greeting = nowHour < 12 ? t.greetingMorning : nowHour < 20 ? t.greetingAfternoon : t.greetingEvening;
+  const timeGreeting = nowHour < 12 ? t.greetingMorning : nowHour < 20 ? t.greetingAfternoon : t.greetingEvening;
+  const greeting =
+    daysSincePlayed != null && daysSincePlayed > 1
+      ? `${timeGreeting}, ${t.daysWithoutPlayingMessage(daysSincePlayed)}.`
+      : timeGreeting;
 
   return (
     <Layout showFooter>
       <Box sx={{ width: "100%", px: { xs: 1.5, md: 2 }, pb: 2, display: "flex", flexDirection: "column", gap: 2 }}>
-        <Typography
-          variant="h2"
-          sx={{ color: "#fff", fontWeight: 700, letterSpacing: "1px", fontFamily: "Lobster, cursive", textAlign: "center", width: "100%" }}
-        >
-          {t.appName}
-        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Typography
+            variant="h2"
+            sx={{ color: "#fff", fontWeight: 700, letterSpacing: "1px", fontFamily: "Lobster, cursive", textAlign: "center", width: "100%" }}
+          >
+            {t.appName}
+          </Typography>
 
-        <Typography
-          variant="h6"
-          sx={{ color: "rgba(255,255,255,0.64)", fontStyle: "italic", letterSpacing: "2px", textAlign: "center", fontSize: { xs: 18, md: 22 } }}
-        >
-          {t.tagline}
-        </Typography>
+          <Typography
+            variant="h6"
+            sx={{ color: "rgba(255,255,255,0.64)", fontStyle: "italic", letterSpacing: "2px", textAlign: "center", fontSize: { xs: 18, md: 22 } }}
+          >
+            {t.tagline}
+          </Typography>
+        </Box>
 
         <Typography sx={{ color: "#ffe6e6", fontSize: 18, fontWeight: 600 }}>{greeting}</Typography>
 
@@ -59,8 +67,8 @@ export default function Home() {
         <Box sx={{ width: "100%", borderRadius: "24px", backgroundColor: CARD_BG, p: 2, display: "flex", flexDirection: "column", gap: 2, boxShadow: "0 12px 24px rgba(0,0,0,0.18)" }}>
           {/* Preview de ronda */}
           <Box sx={{
-            width: "100%", borderRadius: "16px", backgroundColor: "#f3f3f3",
-            p: 3, display: "flex", flexDirection: "column", alignItems: "center", gap: 1.5,
+            width: "100%", aspectRatio: "1", borderRadius: "16px", backgroundColor: "#f3f3f3",
+            p: 1.25, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-evenly", gap: 1.5,
           }}>
             <Typography sx={{ fontSize: 13, color: "#888", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>
               {t.exampleRoundLabel}
@@ -103,9 +111,9 @@ export default function Home() {
                 color: ACCENT,
                 fontWeight: 800,
                 borderRadius: 999,
-                px: 4,
-                py: 1.8,
-                fontSize: 20,
+                px: 3,
+                py: 1.4,
+                fontSize: 18,
                 textTransform: "none",
                 boxShadow: "0 0 0 4px rgba(255,255,255,0.35), 0 10px 24px rgba(0,0,0,0.4)",
                 "&:hover": { backgroundColor: "#fff", boxShadow: "0 0 0 4px rgba(255,255,255,0.5), 0 12px 26px rgba(0,0,0,0.45)" },

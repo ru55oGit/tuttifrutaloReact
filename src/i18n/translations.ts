@@ -10,6 +10,7 @@ export interface Translation {
   greetingMorning: string;
   greetingAfternoon: string;
   greetingEvening: string;
+  daysWithoutPlayingMessage: (days: number) => string;
   readyToPlay: string;
   playButton: string;
   exampleRoundLabel: string;
@@ -66,6 +67,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     greetingMorning: "Buenos días",
     greetingAfternoon: "Buenas tardes",
     greetingEvening: "Buenas noches",
+    daysWithoutPlayingMessage: (days) => `hace ${days} días que no jugás`,
     readyToPlay: "¿Listo para jugar Tuttifrutalo?",
     playButton: "JUGAR",
     exampleRoundLabel: "Ejemplo de ronda",
