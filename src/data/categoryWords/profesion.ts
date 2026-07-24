@@ -1,7 +1,7 @@
 import { WordsByLetter } from "./types";
 
 export const PROFESION_WORDS: WordsByLetter = {
-  A: ["Abogado", "Arquitecto", "Actor", "Albañil", "Astronauta", "Auditor", "Artesano", "Apicultor", "Agricultor", "Animador", "Afilador", "Antropólogo", "Administrador", "Astrónomo", "Agrónomo", "Actuario", "Actriz", "Agente inmobiliario", "Arqueólogo", "Asesor empresarial", "Asesor de imagen", "Ambientalista", "Agente de ventas", "Analista financiero", "Animador sociocultural", "Auxiliar de handling", "Azafato de eventos", "Azafato de vuelo", "Autor"],
+  A: ["Abogado", "Arquitecto", "Actor", "Albañil", "Astronauta", "Auditor", "Artesano", "Apicultor", "Agricultor", "Animador", "Afilador", "Antropólogo", "Administrador", "Astrónomo", "Agrónomo", "Actuario", "Actriz", "Agente inmobiliario", "Arqueólogo", "Asesor empresarial", "Asesor de imagen", "Ambientalista", "Agente de ventas", "Analista financiero", "Animador sociocultural", "Auxiliar de handling", "Azafato de eventos", "Azafato de vuelo", "Autor", "Anestesiólogo"],
   B: ["Bombero", "Bibliotecario", "Biólogo", "Barrendero", "Barbero", "Botánico", "Bailarín", "Bromatólogo"],
   C: ["Cocinero", "Contador", "Carpintero", "Chofer", "Cirujano", "Cerrajero", "Camarero", "Cajero", "Carnicero", "Calígrafo", "Cardiólogo", "Cantante", "Cazador", "Chef", "Criminólogo", "Climatólogo", "Carretillero", "Cartógrafo", "Ceramista", "Community manager", "Contable", "Conserje", "Celador", "Coordinador de atención domiciliaria"],
   D: ["Diseñador", "Dentista", "Doctor", "Desarrollador web", "Dermatólogo", "Decorador", "Deportista", "Diseñador de modas", "Director de restaurante", "Diseñador de interiores", "Diseñador 3D", "Diseñador gráfico"],

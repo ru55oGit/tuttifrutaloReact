@@ -1,7 +1,7 @@
 import { WordsByLetter } from "./types";
 
 export const ANIMAL_WORDS: WordsByLetter = {
-  A: ["Abeja", "Abejorro", "Ácaro", "Águila", "Ajolote", "Alce", "Almeja", "Anaconda", "Anémona de mar", "Antílope", "Araña", "Ardilla", "Atún", "Avestruz", "Avispa"],
+  A: ["Abeja", "Abejorro", "Ácaro", "Águila", "Ajolote", "Alce", "Almeja", "Anaconda", "Anémona de mar", "Antílope", "Araña", "Ardilla", "Armadillo", "Atún", "Avestruz", "Avispa"],
   B: ["Bacalao", "Ballena", "Bisonte", "Boa", "Buey", "Búfalo", "Búho", "Buitre", "Burro"],
   C: ["Caballo", "Cabra", "Cabrito", "Cacatúa", "Cachorro", "Caimán", "Calamar", "Camaleón", "Camello", "Canario", "Cangrejo", "Canguro", "Cardenal", "Carnero", "Castor", "Cebra", "Cerda", "Cerdo", "Chimpancé", "Chinche", "Chinchilla", "Ciempiés", "Ciervo", "Cisne", "Cobaya", "Cobra", "Cocodrilo", "Colibrí", "Cóndor", "Coneja", "Conejo", "Coral", "Cordero", "Cucaracha", "Culebra"],
   D: ["Delfín", "Dromedario"],
@@ -12,13 +12,13 @@ export const ANIMAL_WORDS: WordsByLetter = {
   I: ["Íbice", "Iguana"],
   J: ["Jabalí", "Jaguar", "Jilguero", "Jirafa"],
   L: ["Lagarto", "Langosta", "Lechón", "Lechuza", "Lenguado", "León", "León marino", "Leona", "Leopardo", "Libélula", "Liebre", "Llama", "Lobo", "Loro"],
-  M: ["Mapache", "Mariposa", "Mariquita", "Marmota", "Medusa", "Milpiés", "Mirlo", "Mofeta", "Mono", "Morsa", "Mosca", "Mosquito", "Mula", "Murciélago"],
+  M: ["Mapache", "Mariposa", "Mariquita", "Marmota", "Medusa", "Milpiés", "Mirlo", "Mofeta", "Mono", "Morsa", "Mosca", "Mosquito", "Mula", "Mulita", "Murciélago"],
   N: ["Narval", "Nutria"],
   O: ["Orca", "Oruga", "Oso", "Oso pardo", "Oso polar", "Ostra", "Oveja"],
-  P: ["Paloma", "Pato", "Pavo", "Pavo real", "Periquito", "Perra", "Perro", "Pez", "Pez dorado", "Pingüino", "Piojo", "Pitón", "Polilla", "Pollito", "Pollo", "Potro", "Puercoespín", "Pulga", "Pulpo", "Puma"],
+  P: ["Paloma", "Pato", "Pavo", "Pavo real", "Peludo", "Periquito", "Perra", "Perro", "Pez", "Pez dorado", "Pingüino", "Piojo", "Pitón", "Polilla", "Pollito", "Pollo", "Potro", "Puercoespín", "Pulga", "Pulpo", "Puma"],
   R: ["Rana", "Rata", "Ratón", "Reno", "Rinoceronte"],
   S: ["Salamandra", "Salamanquesa", "Salmón", "Saltamontes", "Sapo", "Sardina", "Serpiente", "Suricata"],
-  T: ["Termita", "Ternero", "Tiburón", "Tigre", "Toro", "Tortuga", "Tortuga marina", "Tortuga terrestre", "Tritón", "Tucán"],
+  T: ["Tatú", "Termita", "Ternero", "Tiburón", "Tigre", "Toro", "Tortuga", "Tortuga marina", "Tortuga terrestre", "Tritón", "Tucán"],
   U: ["Urraca"],
   V: ["Vaca", "Venado", "Víbora", "Vicuña"],
   Y: ["Yacaré", "Yegua"],
