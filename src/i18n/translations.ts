@@ -12,6 +12,8 @@ export interface Translation {
   greetingEvening: string;
   readyToPlay: string;
   playButton: string;
+  exampleRoundLabel: string;
+  exampleRoundExplanation: string;
   whatIsTitle: string;
   whatIsBody: string;
   howToPlayTitle: string;
@@ -66,6 +68,8 @@ export const translations: Record<SupportedLanguage, Translation> = {
     greetingEvening: "Buenas noches",
     readyToPlay: "¿Listo para jugar Tuttifrutalo?",
     playButton: "JUGAR",
+    exampleRoundLabel: "Ejemplo de ronda",
+    exampleRoundExplanation: "Te toca una letra al azar y completás las 7 categorías con esa inicial antes de que se acabe el tiempo.",
     whatIsTitle: "¿Qué es Tuttifrutalo?",
     whatIsBody: "Tuttifrutalo es el clásico juego de Basta/Stop. Sale una letra al azar y tenés que completar una palabra por categoría que empiece con esa letra, antes de que se acabe el tiempo.",
     howToPlayTitle: "¿Cómo jugar?",

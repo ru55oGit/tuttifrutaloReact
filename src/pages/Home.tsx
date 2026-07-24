@@ -7,9 +7,17 @@ import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import Layout from "../components/Layout";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getBestScore, BestScore } from "../utils/tuttiRecordState";
+import { Category } from "../data/categoryWords";
 
 const ACCENT = "#e74c3c";
 const CARD_BG = "#eb6f62";
+
+const EXAMPLE_LETTER = "V";
+const EXAMPLE_ENTRIES: { category: Category; answer: string }[] = [
+  { category: "pais", answer: "Venezuela" },
+  { category: "animal", answer: "Vaca" },
+  { category: "color", answer: "Verde" },
+];
 
 export default function Home() {
   const navigate = useNavigate();
@@ -48,7 +56,43 @@ export default function Home() {
         <Typography sx={{ color: "#fff", fontSize: 24, fontWeight: 700, lineHeight: 1.4 }}>{t.readyToPlay}</Typography>
 
         {/* Card principal */}
-        <Box sx={{ width: "100%", borderRadius: "24px", backgroundColor: CARD_BG, p: 2, boxShadow: "0 12px 24px rgba(0,0,0,0.18)" }}>
+        <Box sx={{ width: "100%", borderRadius: "24px", backgroundColor: CARD_BG, p: 2, display: "flex", flexDirection: "column", gap: 2, boxShadow: "0 12px 24px rgba(0,0,0,0.18)" }}>
+          {/* Preview de ronda */}
+          <Box sx={{
+            width: "100%", borderRadius: "16px", backgroundColor: "#f3f3f3",
+            p: 3, display: "flex", flexDirection: "column", alignItems: "center", gap: 1.5,
+          }}>
+            <Typography sx={{ fontSize: 13, color: "#888", fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}>
+              {t.exampleRoundLabel}
+            </Typography>
+            <Box sx={{
+              width: 52, height: 52, borderRadius: "50%", backgroundColor: "#fff",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 26, fontWeight: 800, color: ACCENT, fontFamily: "monospace",
+              border: `2px solid ${ACCENT}`, boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            }}>
+              {EXAMPLE_LETTER}
+            </Box>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center" }}>
+              {EXAMPLE_ENTRIES.map(({ category, answer }) => (
+                <Box
+                  key={category}
+                  sx={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "8px", border: "1px solid #e5e7eb", overflow: "hidden" }}
+                >
+                  <Typography sx={{ fontSize: 10, color: "#888", fontWeight: 700, textTransform: "uppercase", px: 1, py: 0.75, borderRight: "1px solid #f0f0f0", whiteSpace: "nowrap" }}>
+                    {t.categoryLabels[category]}
+                  </Typography>
+                  <Typography sx={{ fontSize: 13, fontWeight: 800, color: ACCENT, px: 1, fontFamily: "monospace" }}>
+                    {answer}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+            <Typography sx={{ fontSize: 12, color: "#999", textAlign: "center" }}>
+              {t.exampleRoundExplanation}
+            </Typography>
+          </Box>
+
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               variant="contained"
