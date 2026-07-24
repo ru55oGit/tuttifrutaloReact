@@ -299,7 +299,7 @@ export default function Game() {
 
   return (
     <Layout showFooter={false}>
-      <Box sx={{ width: "100%", px: { xs: 1.5, md: 2 }, pb: 2, display: "flex", flexDirection: "column", gap: 1.5 }}>
+      <Box sx={{ width: "100%", px: { xs: 1.5, md: 2 }, pb: isMobile ? "260px" : 2, display: "flex", flexDirection: "column", gap: 1.5 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <Box
             sx={{
@@ -330,7 +330,7 @@ export default function Game() {
           </Box>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pb: isMobile ? 32 : 8 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pb: 1 }}>
           {CATEGORIES.map((category) => {
             const isInvalid = invalidFields.has(category);
             return (
