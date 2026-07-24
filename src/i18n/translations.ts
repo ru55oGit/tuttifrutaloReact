@@ -80,7 +80,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     durationTitle: "Duración de la ronda",
     durationLabel: "segundos",
     scoringTitle: "¿Cómo se puntúa?",
-    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman. Además, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra, proporcional al tiempo restante.",
+    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman. Además, si no tenés ninguna respuesta inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra, proporcional al tiempo restante.",
     startButton: "¡Empezar!",
 
     categoryLabels: {

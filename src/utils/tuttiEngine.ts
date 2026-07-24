@@ -90,7 +90,10 @@ export function scoreRound(
     return buildResult(category, letter, answer, alternativesCount, sampleAlternatives);
   });
 
-  const timeBonus = calculateTimeBonus(timeLeft, duration);
+  // El bonus premia terminar rápido y bien: si alguna respuesta es inválida
+  // (no vacía, pero incorrecta) no corresponde premiar la velocidad.
+  const hasInvalidAnswer = results.some((r) => r.status === "invalid");
+  const timeBonus = hasInvalidAnswer ? 0 : calculateTimeBonus(timeLeft, duration);
   const totalScore = results.reduce((sum, r) => sum + r.points, 0) + timeBonus;
 
   return { letter, results, timeBonus, totalScore };

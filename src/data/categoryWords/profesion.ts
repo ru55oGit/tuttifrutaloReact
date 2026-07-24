@@ -13,7 +13,7 @@ export const PROFESION_WORDS: WordsByLetter = {
   J: ["Jardinero", "Juez", "Joyero", "Jugador profesional"],
   L: ["Lingüista", "Lechero", "Lavandero", "Leñador", "Lutier", "Limpiador", "Logopeda", "Lexicógrafo", "Labrador"],
   M: ["Médico", "Maestro", "Mecánico", "Músico", "Modista", "Matemático", "Meteorólogo", "Militar", "Minero", "Mercadólogo", "Manicurista", "Maquetador", "Masajista", "Maquillador", "Modelo"],
-  N: ["Notario", "Niñera", "Neonatólogo", "Nutriólogo", "Naturópata", "Nefrólogo", "Nutricionista"],
+  N: ["Notario", "Niñera", "Neonatólogo", "Neonatóloga", "Nutriólogo", "Naturópata", "Nefrólogo", "Nutricionista"],
   O: ["Odontólogo", "Obrero", "Oculista", "Oftalmólogo", "Óptico", "Obstetra", "Oficinista", "Operario", "Oncólogo", "Optometrista", "Organizador de eventos", "Osteópata"],
   P: ["Profesor", "Piloto", "Pintor", "Periodista", "Peluquero", "Psicólogo", "Plomero", "Pescador", "Panadero", "Peletero", "Pastor", "Paleontólogo", "Politólogo", "Paramédico", "Psicoanalista", "Pastelero", "Programador", "Publicista", "Político", "Podólogo", "Pediatra", "Pedagogo", "Pedicuro", "Perito", "Personal shopper", "Psicopedagogo", "Psiquiatra", "Perito forense"],
   R: ["Recepcionista", "Repartidor", "Relojero", "Radiólogo", "Radioterapeuta", "Redactor", "Relaciones públicas", "Reparador de electrodomésticos", "Repostero"],
