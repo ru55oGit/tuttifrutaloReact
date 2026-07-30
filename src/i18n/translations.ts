@@ -64,9 +64,9 @@ export const translations: Record<SupportedLanguage, Translation> = {
     appName: "Tuttifrutalo",
 
     tagline: "una letra · siete categorías · contrarreloj",
-    greetingMorning: "Buenos días",
-    greetingAfternoon: "Buenas tardes",
-    greetingEvening: "Buenas noches",
+    greetingMorning: "Buenos días ☀️",
+    greetingAfternoon: "Buenas tardes 🌤️",
+    greetingEvening: "Buenas noches 🌙",
     daysWithoutPlayingMessage: (days) => `hace ${days} días que no jugás`,
     readyToPlay: "¿Listo para jugar Tuttifrutalo?",
     playButton: "JUGAR",
