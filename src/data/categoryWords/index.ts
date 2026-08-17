@@ -49,8 +49,12 @@ for (const category of CATEGORIES) {
   }
 }
 
+// Palabras comunes que faltan en an-array-of-spanish-words (mismo criterio
+// que enganchadoReact/letrisReact/viborealoReact para su propio diccionario).
+const EXTRA_GENERIC_WORDS = ["wifi"];
+
 const GENERIC_WORDS_BY_LETTER = new Map<string, Set<string>>();
-for (const word of rawWords as unknown as string[]) {
+for (const word of [...(rawWords as unknown as string[]), ...EXTRA_GENERIC_WORDS]) {
   const normalized = normalizeAnswer(word);
   if (normalized.length < 3) continue;
   const letter = normalized[0];
