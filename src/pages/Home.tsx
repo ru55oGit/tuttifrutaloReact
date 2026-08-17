@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import Layout from "../components/Layout";
+import AdsenseScript from "../components/AdsenseScript";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getBestScore, BestScore } from "../utils/tuttiRecordState";
 import { getDaysSinceLastPlayed } from "../utils/lastPlayedState";
@@ -47,6 +48,7 @@ export default function Home() {
 
   return (
     <Layout showFooter>
+      <AdsenseScript />
       {fromHub && (
         <Box
           component="a"
