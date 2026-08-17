@@ -153,6 +153,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) => {
               cursor: "pointer",
               zIndex: 2,
               width: "max-content",
+              userSelect: "none",
+              WebkitUserSelect: "none",
+              WebkitTouchCallout: "none",
             }}
             onClick={() => navigate("/")}
           >
