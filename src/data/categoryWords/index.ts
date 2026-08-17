@@ -51,7 +51,7 @@ for (const category of CATEGORIES) {
 
 // Palabras comunes que faltan en an-array-of-spanish-words (mismo criterio
 // que enganchadoReact/letrisReact/viborealoReact para su propio diccionario).
-const EXTRA_GENERIC_WORDS = ["wifi"];
+const EXTRA_GENERIC_WORDS = ["wifi", "kiwi"];
 
 const GENERIC_WORDS_BY_LETTER = new Map<string, Set<string>>();
 for (const word of [...(rawWords as unknown as string[]), ...EXTRA_GENERIC_WORDS]) {
