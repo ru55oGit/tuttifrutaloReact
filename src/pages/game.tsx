@@ -11,6 +11,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Layout from "../components/Layout";
 import VirtualKeyboard from "../components/VirtualKeyboard";
+import HowToPlayCollapse from "../components/HowToPlayCollapse";
 import { useIsMobile } from "../hooks/useIsMobile";
 import { useLanguage } from "../i18n/LanguageContext";
 import { CATEGORIES, Category, isValidAnswer } from "../data/categoryWords";
@@ -338,6 +339,8 @@ export default function Game() {
             <Typography sx={{ color: "#fff", fontWeight: 700, fontSize: 14, mt: 0.5, textAlign: "right" }}>{timeLeft}s</Typography>
           </Box>
         </Box>
+
+        <HowToPlayCollapse title={t.howToPlayTitle} body={t.howToPlayBody} />
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1, pb: 1 }}>
           {CATEGORIES.map((category) => {
