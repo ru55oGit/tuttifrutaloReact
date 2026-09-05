@@ -115,7 +115,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     privacyBody: [
       "Tuttifrutalo no recopila datos personales. El progreso y los récords se guardan únicamente en el almacenamiento local de tu navegador (localStorage) y nunca se envían a ningún servidor.",
       "Este sitio puede mostrar anuncios de Google AdSense, que puede usar cookies para personalizar la publicidad según tu actividad de navegación.",
-      "Si tenés preguntas sobre esta política, podés contactarnos a patricio.ezequiel.toledo@gmail.com.",
+      "Si tenés preguntas sobre esta política, podés contactarnos a boludeando.app@gmail.com.",
     ],
   },
 };
