@@ -19,6 +19,8 @@ export interface Translation {
   whatIsBody: string;
   howToPlayTitle: string;
   howToPlayBody: string;
+  faqTitle: string;
+  faq: { q: string; a: string }[];
   recordTitle: string;
   recordBody: (score: number, letter: string) => string;
   recordWordsLabel: string;
@@ -76,6 +78,15 @@ export const translations: Record<SupportedLanguage, Translation> = {
     whatIsBody: "Tuttifrutalo es el clásico juego de Basta/Stop. Sale una letra al azar y tenés que completar una palabra por categoría que empiece con esa letra, antes de que se acabe el tiempo.",
     howToPlayTitle: "¿Cómo jugar?",
     howToPlayBody: "Elegí la duración de la ronda y tocá Empezar. Te va a tocar una letra: completá País, Color, Fruta, Animal, Nombre, Profesión y Cosa con esa letra. Tocá ¡Basta! cuando termines o esperá a que se acabe el tiempo. Cada respuesta válida suma 10 puntos más 1 punto extra por cada letra de la palabra.",
+    faqTitle: "Preguntas frecuentes",
+    faq: [
+      { q: "¿Tuttifrutalo es gratis?", a: "Sí, jugar a Tuttifrutalo es completamente gratis. La app se sostiene con publicidad, nunca vas a tener que pagar para jugar." },
+      { q: "¿Necesito crear una cuenta?", a: "No. Tu récord y las palabras que usaste se guardan en este dispositivo automáticamente, no hace falta registrarse ni iniciar sesión." },
+      { q: "¿Cómo se puntúa cada categoría?", a: "Cada respuesta válida suma 10 puntos más 1 punto extra por cada letra de la palabra. Las respuestas vacías o inválidas no suman nada." },
+      { q: "¿Qué pasa si aprieto BASTA antes de que se acabe el tiempo?", a: "Si no tenés ninguna respuesta inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra de bonus, proporcional al tiempo que te quedaba." },
+      { q: "¿Cuáles son las 7 categorías?", a: "País, Color, Frutas y Verduras, Animal, Nombre, Profesión y Cosa, todas con la misma letra inicial." },
+      { q: "¿Puedo elegir la letra para jugar con amigos?", a: "Sí, si querés armar un desafío con amigos podés elegir manualmente la letra en vez de que salga al azar, así todos completan las categorías con la misma inicial." },
+    ],
     recordTitle: "Récord",
     recordBody: (score, letter) => `${score} puntos con la letra ${letter}`,
     recordWordsLabel: "Palabras usadas",
