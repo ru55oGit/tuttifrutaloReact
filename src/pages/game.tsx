@@ -58,6 +58,7 @@ export default function Game() {
   const [roundResult, setRoundResult] = useState<RoundResult | null>(null);
   const [isNewRecord, setIsNewRecord] = useState(false);
   const [focusedCategory, setFocusedCategory] = useState<Category | null>(null);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [invalidFields, setInvalidFields] = useState<Set<Category>>(new Set());
 
   const answersRef = useRef(answers);
@@ -103,6 +104,7 @@ export default function Game() {
     setIsNewRecord(false);
     setFocusedCategory(null);
     setInvalidFields(new Set());
+    setKeyboardOpen(false);
     setPhase("playing");
   }
 
@@ -377,6 +379,7 @@ export default function Game() {
                   onChange={(e) => handleAnswerChange(category, e.target.value.toUpperCase())}
                   onFocus={(e) => {
                     setFocusedCategory(category);
+                    setKeyboardOpen(true);
                     if (isMobile) {
                       setTimeout(() => e.target.scrollIntoView({ block: "center", behavior: "smooth" }), 250);
                     }
@@ -411,7 +414,7 @@ export default function Game() {
         </Button>
       </Box>
 
-      <VirtualKeyboard onKey={handleVirtualKey} />
+      <VirtualKeyboard onKey={handleVirtualKey} open={keyboardOpen} gameSlug="tuttifrutalo" />
     </Layout>
   );
 }

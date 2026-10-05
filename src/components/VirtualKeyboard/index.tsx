@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import HouseAdBanner from "../../ads/HouseAdBanner";
 
 const ACCENT = "#e74c3c";
 
@@ -11,9 +12,13 @@ const ROWS_ES = [
 
 interface Props {
   onKey: (key: string) => void;
+  // Arranca cerrado (muestra un banner en su lugar) hasta que el juego pide
+  // abrirlo — se abre cuando tocan el casillero de input.
+  open?: boolean;
+  gameSlug?: string;
 }
 
-export default function VirtualKeyboard({ onKey }: Props) {
+export default function VirtualKeyboard({ onKey, open = true, gameSlug = "tuttifrutalo" }: Props) {
   return (
     <Box
       sx={{
@@ -31,7 +36,12 @@ export default function VirtualKeyboard({ onKey }: Props) {
         px: "4px",
       }}
     >
-      {ROWS_ES.map((row, ri) => (
+      {!open && (
+        <Box sx={{ display: "flex", justifyContent: "center", py: 0.5 }}>
+          <HouseAdBanner slot={`${gameSlug}-keyboard-banner`} gameSlug={gameSlug} locale="es" />
+        </Box>
+      )}
+      {open && ROWS_ES.map((row, ri) => (
         <Box key={ri} sx={{ display: "flex", justifyContent: "center", gap: "4px", mb: "4px" }}>
           {row.map((key) => (
             <Box
