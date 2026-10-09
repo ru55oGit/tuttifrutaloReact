@@ -208,31 +208,35 @@ export default function Home() {
         )}
 
         {/* Récord */}
-        {record && (
-          <Box sx={{ borderRadius: "16px", backgroundColor: "#fff", p: 2, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
-            <Typography sx={{ fontSize: 28, fontWeight: 800, color: "#222", mb: 0.5 }}>{t.recordTitle}</Typography>
-            <Typography sx={{ fontSize: 15, color: "#666" }}>{t.recordBody(record.score, record.letter)}</Typography>
-            {record.words.length > 0 && (
-              <>
-                <Typography sx={{ fontSize: 12, color: "#888", fontWeight: 700, textTransform: "uppercase", mt: 1.5, mb: 0.75 }}>
-                  {t.recordWordsLabel}
-                </Typography>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
-                  {record.words.map((word, i) => (
-                    <Box
-                      key={i}
-                      sx={{ px: 1.5, py: 0.5, borderRadius: "6px", backgroundColor: `${ACCENT}18`, border: `1px solid ${ACCENT}55` }}
-                    >
-                      <Typography sx={{ color: ACCENT, fontFamily: "monospace", fontSize: 13, fontWeight: 700 }}>
-                        {word}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </>
-            )}
-          </Box>
-        )}
+        <Box sx={{ borderRadius: "16px", backgroundColor: "#fff", p: 2, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
+          <Typography sx={{ fontSize: 28, fontWeight: 800, color: "#222", mb: 0.5 }}>{t.recordTitle}</Typography>
+          {record ? (
+            <>
+              <Typography sx={{ fontSize: 15, color: "#666" }}>{t.recordBody(record.score, record.letter)}</Typography>
+              {record.words.length > 0 && (
+                <>
+                  <Typography sx={{ fontSize: 12, color: "#888", fontWeight: 700, textTransform: "uppercase", mt: 1.5, mb: 0.75 }}>
+                    {t.recordWordsLabel}
+                  </Typography>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
+                    {record.words.map((word, i) => (
+                      <Box
+                        key={i}
+                        sx={{ px: 1.5, py: 0.5, borderRadius: "6px", backgroundColor: `${ACCENT}18`, border: `1px solid ${ACCENT}55` }}
+                      >
+                        <Typography sx={{ color: ACCENT, fontFamily: "monospace", fontSize: 13, fontWeight: 700 }}>
+                          {word}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </>
+              )}
+            </>
+          ) : (
+            <Typography sx={{ fontSize: 13, color: "#888" }}>{t.recordEmptyBody}</Typography>
+          )}
+        </Box>
 
         {!adFree && (
           <HouseAdBanner

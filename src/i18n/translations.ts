@@ -24,6 +24,7 @@ export interface Translation {
   faqTitle: string;
   faq: { q: string; a: string }[];
   recordTitle: string;
+  recordEmptyBody: string;
   recordBody: (score: number, letter: string) => string;
   recordWordsLabel: string;
 
@@ -92,6 +93,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
       { q: "¿Puedo elegir la letra para jugar con amigos?", a: "Sí, si querés armar un desafío con amigos podés elegir manualmente la letra en vez de que salga al azar, así todos completan las categorías con la misma inicial." },
     ],
     recordTitle: "Récord",
+    recordEmptyBody: "Todavía no jugaste ninguna partida.",
     recordBody: (score, letter) => `${score} puntos con la letra ${letter}`,
     recordWordsLabel: "Palabras usadas",
 
