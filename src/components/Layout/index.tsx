@@ -73,8 +73,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) => {
         width: { md: "480px", xs: "100%" },
         margin: "0 auto",
         position: "relative",
-        overflowX: "hidden",
-        overflowY: "auto",
+        overflow: "hidden",
         pb: 2,
       }}
     >
