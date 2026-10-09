@@ -12,6 +12,7 @@ import { getDaysSinceLastPlayed } from "../utils/lastPlayedState";
 import { Category } from "../data/categoryWords";
 import { markFromHub, cameFromHubBefore } from "../utils/hubOriginState";
 import { isAdFree, purchaseAdFree, syncAdFreeAfterReturn } from "../ads/adFreeEntitlement";
+import HouseAdBanner from "../ads/HouseAdBanner";
 
 const ACCENT = "#e74c3c";
 const CARD_BG = "#eb6f62";
@@ -183,6 +184,15 @@ export default function Home() {
             </Button>
           </Box>
         </Box>
+
+        {!adFree && (
+          <HouseAdBanner
+            slot="tuttifrutalo-home-double-banner"
+            gameSlug="tuttifrutalo"
+            locale={currentLanguage}
+            format="banner_double"
+          />
+        )}
 
         {/* Récord */}
         {record && (
