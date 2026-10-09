@@ -10,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Layout from "../components/Layout";
+import HouseAdBanner from "../ads/HouseAdBanner";
 import VirtualKeyboard from "../components/VirtualKeyboard";
 import HowToPlayCollapse from "../components/HowToPlayCollapse";
 import { useIsMobile } from "../hooks/useIsMobile";
@@ -239,6 +240,8 @@ export default function Game() {
           >
             {t.startButton}
           </Button>
+
+          <HouseAdBanner slot="tuttifrutalo-config-banner" gameSlug="tuttifrutalo" locale={currentLanguage} />
         </Box>
       </Layout>
     );
