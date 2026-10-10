@@ -1,6 +1,6 @@
-// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/RewardedFallbackCreative.tsx el 2026-10-05.
-// Si cambia la API del backend, actualizar acá y en el resto de los juegos a mano.
+// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/RewardedFallbackCreative.tsx el 2026-10-10.
 import Box from "@mui/material/Box";
+import { getAdFallbackCopy } from "./adFallbackCopy";
 
 // Lo que RewardedAdModal muestra en vez de la imagen/video cuando el slot
 // rewarded no tiene ningún creative real elegible: en vez de dejar al
@@ -8,10 +8,25 @@ import Box from "@mui/material/Box";
 // mismo. El token de recompensa para este caso lo emite /ads/next con
 // creativeId null — ver api.ts — así que la recompensa real se sigue
 // pudiendo reclamar normalmente.
-const PRICE_TILES = ["$", "3", ".", "5", "0", "0"];
-const SIGNUP_URL = "https://ads-api.boludeando.com/login";
+// El ?lang= precarga el idioma objetivo de la campaña en el alta del
+// anunciante (ver Login.tsx/Dashboard.tsx en boludeando-ads).
+function signupUrl(locale: string | undefined): string {
+  const base = "https://ads-api.boludeando.com/login";
+  return locale ? `${base}?lang=${encodeURIComponent(locale)}` : base;
+}
 
-export default function RewardedFallbackCreative() {
+interface RewardedFallbackCreativeProps {
+  // 3500 = tier "rewarded" (ver adFormats.ts) — es el único formato que
+  // compite por este slot, así que no hace falta parametrizarlo desde
+  // afuera como en AdSlotAvailableBanner.
+  weeklyPrice?: number;
+  // es/en/pt — fr/de caen a español por ahora (ver adFallbackCopy.ts).
+  locale?: string;
+}
+
+export default function RewardedFallbackCreative({ weeklyPrice = 3500, locale }: RewardedFallbackCreativeProps) {
+  const copy = getAdFallbackCopy(locale);
+  const priceTiles = String(weeklyPrice).split("");
   const accentColor = "#e74c3c";
   const inkColor = "#3a1512";
   const paper = "#fff8f3";
@@ -39,24 +54,24 @@ export default function RewardedFallbackCreative() {
       }}
     >
       <Box component="span" sx={{ fontSize: 13, fontWeight: 700, color: `${inkColor}99` }}>
-        Este lugar está libre
+        {copy.kicker}
       </Box>
 
       <Box sx={{ display: "flex", gap: "2px" }}>
-        {PRICE_TILES.map((ch, i) => (
+        {priceTiles.map((ch, i) => (
           <Box
             key={i}
             sx={{
               display: "grid",
               placeItems: "center",
-              width: ch === "." ? 7 : 20,
+              width: 20,
               height: 28,
-              backgroundColor: ch === "." ? "transparent" : accentColor,
-              color: ch === "." ? accentColor : "#fff",
+              backgroundColor: accentColor,
+              color: "#fff",
               borderRadius: "5px",
               fontWeight: 900,
               fontSize: 17,
-              boxShadow: ch === "." ? "none" : "inset 0 -3px 0 rgba(0,0,0,0.18)",
+              boxShadow: "inset 0 -3px 0 rgba(0,0,0,0.18)",
             }}
           >
             {ch}
@@ -64,14 +79,14 @@ export default function RewardedFallbackCreative() {
         ))}
       </Box>
       <Box component="span" sx={{ fontSize: 12, fontWeight: 800, color: accentColor }}>
-        por semana
+        {copy.perWeek}
       </Box>
 
-      <Box sx={{ fontSize: 17, fontWeight: 900, color: inkColor, mt: 1 }}>Cargás tu aviso en 2 minutos</Box>
+      <Box sx={{ fontSize: 17, fontWeight: 900, color: inkColor, mt: 1 }}>{copy.uploadIn2Min}</Box>
 
       <Box
         component="a"
-        href={SIGNUP_URL}
+        href={signupUrl(locale)}
         target="_blank"
         rel="noopener noreferrer"
         sx={{
@@ -89,7 +104,7 @@ export default function RewardedFallbackCreative() {
           textDecoration: "none",
         }}
       >
-        Quiero anunciar
+        {copy.wantToAdvertise}
         <svg
           viewBox="0 0 24 24"
           width={16}

@@ -1,22 +1,21 @@
-// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/AdSlotAvailableBanner.tsx el 2026-10-09.
+// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/AdSlotAvailableBanner.tsx el 2026-10-10.
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
+import { getAdFallbackCopy } from "./adFallbackCopy";
 
 // Fallback que HouseAdBanner muestra en vez de nada cuando un slot
 // house/sold no tiene ninguna creatividad real elegible: en vez de dejar el
 // espacio en blanco, invita a anunciar ahí mismo. Diseño armado por el
 // usuario (banner-anuncia.html), portado a React/MUI acá.
-const ROTATING_LINES = [
-  "Tu marca podría estar acá",
-  "Que te vean mientras juegan",
-  "Ideal para tu emprendimiento",
-  "Cargás tu aviso en 2 minutos",
-  "Anunciá en Boludeando",
-];
-
 const ROTATE_INTERVAL_MS = 2800;
 const EXIT_DURATION_MS = 500;
-const SIGNUP_URL = "https://ads-api.boludeando.com/login";
+
+// El ?lang= precarga el idioma objetivo de la campaña en el alta del
+// anunciante (ver Login.tsx/Dashboard.tsx en boludeando-ads).
+function signupUrl(locale: string | undefined): string {
+  const base = "https://ads-api.boludeando.com/login";
+  return locale ? `${base}?lang=${encodeURIComponent(locale)}` : base;
+}
 
 interface AdSlotAvailableBannerProps {
   // 1000 = tier "banner" (default, ver adFormats.ts). Pasar 2000 para el
@@ -29,23 +28,31 @@ interface AdSlotAvailableBannerProps {
   // banner simple 4:1, y una fila horizontal centrada en una caja el doble
   // de alta deja la mitad del espacio vacío arriba/abajo sin usar.
   double?: boolean;
+  // es/en/pt — fr/de (y cualquier otro) caen a español por ahora
+  // (ver adFallbackCopy.ts, 2026-10-10).
+  locale?: string;
   accentColor?: string;
   inkColor?: string;
 }
 
-function useRotatingLine() {
+function useRotatingLine(lineCount: number) {
   const [index, setIndex] = useState(0);
   const [exitingIndex, setExitingIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    setIndex(0);
+    setExitingIndex(null);
+  }, [lineCount]);
 
   useEffect(() => {
     const rotate = setInterval(() => {
       setIndex((current) => {
         setExitingIndex(current);
-        return (current + 1) % ROTATING_LINES.length;
+        return (current + 1) % lineCount;
       });
     }, ROTATE_INTERVAL_MS);
     return () => clearInterval(rotate);
-  }, []);
+  }, [lineCount]);
 
   useEffect(() => {
     if (exitingIndex === null) return;
@@ -59,13 +66,15 @@ function useRotatingLine() {
 export default function AdSlotAvailableBanner({
   weeklyPrice = 1000,
   double = false,
+  locale,
   accentColor = "#e74c3c",
   inkColor = "#3a1512",
 }: AdSlotAvailableBannerProps) {
+  const copy = getAdFallbackCopy(locale);
   const priceTiles = String(weeklyPrice).split("");
-  const { index, exitingIndex } = useRotatingLine();
+  const { index, exitingIndex } = useRotatingLine(copy.rotatingLines.length);
   const paper = "#fff8f3";
-  const ariaLabel = `Anunciá en este espacio por $${weeklyPrice} la semana`;
+  const ariaLabel = copy.ariaLabel(weeklyPrice);
 
   if (double) {
     // Layout vertical en 3 filas (kicker / texto rotativo a 2 líneas /
@@ -75,7 +84,7 @@ export default function AdSlotAvailableBanner({
     return (
       <Box
         component="a"
-        href={SIGNUP_URL}
+        href={signupUrl(locale)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={ariaLabel}
@@ -111,11 +120,11 @@ export default function AdSlotAvailableBanner({
         }}
       >
         <Box component="span" sx={{ fontSize: 13, fontWeight: 700, color: `${inkColor}99` }}>
-          Este lugar está libre
+          {copy.kicker}
         </Box>
 
         <Box sx={{ position: "relative", height: 48, overflow: "hidden" }}>
-          {ROTATING_LINES.map((line, i) => {
+          {copy.rotatingLines.map((line, i) => {
             const isIn = i === index;
             const isOut = i === exitingIndex;
             return (
@@ -167,7 +176,7 @@ export default function AdSlotAvailableBanner({
               ))}
             </Box>
             <Box component="span" sx={{ fontSize: 12, fontWeight: 800, color: accentColor }}>
-              por semana
+              {copy.perWeek}
             </Box>
           </Box>
 
@@ -204,7 +213,7 @@ export default function AdSlotAvailableBanner({
   return (
     <Box
       component="a"
-      href={SIGNUP_URL}
+      href={signupUrl(locale)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
@@ -243,10 +252,10 @@ export default function AdSlotAvailableBanner({
           component="span"
           sx={{ display: "block", fontSize: 12, fontWeight: 700, color: `${inkColor}99`, mb: 0.25 }}
         >
-          Este lugar está libre
+          {copy.kicker}
         </Box>
         <Box sx={{ position: "relative", height: 24, overflow: "hidden" }}>
-          {ROTATING_LINES.map((line, i) => {
+          {copy.rotatingLines.map((line, i) => {
             const isIn = i === index;
             const isOut = i === exitingIndex;
             return (
@@ -297,7 +306,7 @@ export default function AdSlotAvailableBanner({
           ))}
         </Box>
         <Box component="span" sx={{ fontSize: 11, fontWeight: 800, color: accentColor }}>
-          por semana
+          {copy.perWeek}
         </Box>
       </Box>
 

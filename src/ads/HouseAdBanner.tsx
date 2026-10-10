@@ -1,4 +1,4 @@
-// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/HouseAdBanner.tsx el 2026-10-09.
+// Copiado de boludeando-ads/sdk/boludeando-ads-client/src/HouseAdBanner.tsx el 2026-10-10.
 import { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { fetchNextAd, reportImpression, reportClick } from "./adClient";
@@ -72,7 +72,11 @@ export default function HouseAdBanner({ slot, gameSlug, locale, format = "banner
 
   if (!ad)
     return showFallback ? (
-      <AdSlotAvailableBanner weeklyPrice={FALLBACK_WEEKLY_PRICE[format]} double={format === "banner_double"} />
+      <AdSlotAvailableBanner
+        weeklyPrice={FALLBACK_WEEKLY_PRICE[format]}
+        double={format === "banner_double"}
+        locale={locale}
+      />
     ) : null;
 
   return (
