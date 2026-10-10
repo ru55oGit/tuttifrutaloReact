@@ -132,6 +132,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     privacyBody: [
       "Tuttifrutalo no recopila datos personales. El progreso y los récords se guardan únicamente en el almacenamiento local de tu navegador (localStorage) y nunca se envían a ningún servidor.",
       "Este sitio puede mostrar anuncios de Google AdSense, que puede usar cookies para personalizar la publicidad según tu actividad de navegación.",
+      "Además de Google AdSense, mostramos avisos propios de otros juegos de Boludeando y anuncios \"rewarded\" (a cambio de recompensas en el juego). Para esto enviamos a nuestro propio servidor (ads-api.boludeando.com) datos anónimos: un identificador de sesión generado en tu dispositivo (sin relación con tu identidad), tu país aproximado (por IP), tipo de dispositivo e idioma. No incluye nombre, email ni ningún dato que te identifique. Si elegís comprar la opción de sacarte los anuncios, el pago se procesa a través de MercadoPago; nosotros no recibimos ni guardamos los datos de tu tarjeta — eso queda entre vos y MercadoPago.",
       "Si tenés preguntas sobre esta política, podés contactarnos a boludeando.app@gmail.com.",
     ],
   },
