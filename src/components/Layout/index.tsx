@@ -158,7 +158,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showFooter = true }) => {
             }}
             onClick={() => navigate("/")}
           >
-            Boludeando
+            {t.appName}
           </Box>
         </Box>
       )}
