@@ -109,9 +109,11 @@ export function scoreRound(
     return buildResult(lang, category, letter, answer, alternativesCount, sampleAlternatives);
   });
 
-  // El bonus premia terminar rápido y bien: si alguna respuesta es inválida
-  // (no vacía, pero incorrecta) no corresponde premiar la velocidad.
-  const hasInvalidAnswer = results.some((r) => r.status === "invalid");
+  // El bonus premia terminar rápido y completo: si alguna respuesta es
+  // inválida (no vacía, pero incorrecta) o directamente quedó vacía (BASTA
+  // apretado sin completar las 7 categorías), no corresponde premiar la
+  // velocidad.
+  const hasInvalidAnswer = results.some((r) => r.status === "invalid" || r.status === "empty");
   const timeBonus = hasInvalidAnswer ? 0 : calculateTimeBonus(timeLeft, duration);
   const totalScore = results.reduce((sum, r) => sum + r.points, 0) + timeBonus;
 

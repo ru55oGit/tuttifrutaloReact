@@ -88,7 +88,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
       { q: "¿Tuttifrutalo es gratis?", a: "Sí, jugar a Tuttifrutalo es completamente gratis. La app se sostiene con publicidad, nunca vas a tener que pagar para jugar." },
       { q: "¿Necesito crear una cuenta?", a: "No. Tu récord y las palabras que usaste se guardan en este dispositivo automáticamente, no hace falta registrarse ni iniciar sesión." },
       { q: "¿Cómo se puntúa cada categoría?", a: "Cada respuesta válida suma 10 puntos más 1 punto extra por cada letra de la palabra. Las respuestas vacías o inválidas no suman nada." },
-      { q: "¿Qué pasa si aprieto BASTA antes de que se acabe el tiempo?", a: "Si no tenés ninguna respuesta inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra de bonus, proporcional al tiempo que te quedaba." },
+      { q: "¿Qué pasa si aprieto BASTA antes de que se acabe el tiempo?", a: "Si completaste las 7 categorías y ninguna es inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra de bonus, proporcional al tiempo que te quedaba. Si dejaste alguna vacía, no hay bonus." },
       { q: "¿Cuáles son las 7 categorías?", a: "País, Color, Frutas y Verduras, Animal, Nombre, Profesión y Cosa, todas con la misma letra inicial." },
       { q: "¿Puedo elegir la letra para jugar con amigos?", a: "Sí, si querés armar un desafío con amigos podés elegir manualmente la letra en vez de que salga al azar, así todos completan las categorías con la misma inicial." },
     ],
@@ -103,7 +103,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     durationTitle: "Duración de la ronda",
     durationLabel: "segundos",
     scoringTitle: "¿Cómo se puntúa?",
-    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman. Además, si no tenés ninguna respuesta inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra, proporcional al tiempo restante.",
+    scoringExplanation: "10 puntos por cada categoría con respuesta válida, más 1 punto extra por cada letra de la palabra. Vacías o inválidas no suman. Además, si completaste las 7 categorías y ninguna es inválida, apretar BASTA con tiempo de sobra suma hasta 30 puntos extra, proporcional al tiempo restante.",
     startButton: "¡Empezar!",
 
     categoryLabels: {
@@ -163,7 +163,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
       { q: "Is Tuttifrutalo free?", a: "Yes, playing Tuttifrutalo is completely free. The app runs on ads, you'll never have to pay to play." },
       { q: "Do I need to create an account?", a: "No. Your record and the words you used are saved automatically on this device — no sign-up or login needed." },
       { q: "How is each category scored?", a: "Each valid answer scores 10 points plus 1 extra point per letter of the word. Empty or invalid answers score nothing." },
-      { q: "What happens if I tap STOP before time runs out?", a: "If you don't have any invalid answers, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time you had left." },
+      { q: "What happens if I tap STOP before time runs out?", a: "If you've completed all 7 categories and none are invalid, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time you had left. If you left any category empty, there's no bonus." },
       { q: "What are the 7 categories?", a: "Country, Color, Fruits and Vegetables, Animal, Name, Profession and Thing, all starting with the same letter." },
       { q: "Can I pick the letter to play with friends?", a: "Yes, if you want to set up a challenge with friends you can manually pick the letter instead of drawing it at random, so everyone fills in the categories with the same starting letter." },
     ],
@@ -178,7 +178,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     durationTitle: "Round duration",
     durationLabel: "seconds",
     scoringTitle: "How is it scored?",
-    scoringExplanation: "10 points for each category with a valid answer, plus 1 extra point per letter of the word. Empty or invalid answers score nothing. Also, if you don't have any invalid answers, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time left.",
+    scoringExplanation: "10 points for each category with a valid answer, plus 1 extra point per letter of the word. Empty or invalid answers score nothing. Also, if you've completed all 7 categories and none are invalid, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time left.",
     startButton: "Start!",
 
     categoryLabels: {

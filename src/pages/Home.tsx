@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import Layout from "../components/Layout";
 import AdsenseScript from "../components/AdsenseScript";
+import LanguageSelector from "../components/LanguageSelector";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getBestScore, BestScore } from "../utils/tuttiRecordState";
 import { getDaysSinceLastPlayed } from "../utils/lastPlayedState";
@@ -313,6 +314,8 @@ export default function Home() {
           </>
         )}
       </Box>
+
+      <LanguageSelector />
     </Layout>
   );
 }
