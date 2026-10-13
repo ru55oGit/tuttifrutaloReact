@@ -59,7 +59,7 @@ export interface Translation {
   privacyBody: string[];
 }
 
-export type SupportedLanguage = "es";
+export type SupportedLanguage = "es" | "en";
 
 export const translations: Record<SupportedLanguage, Translation> = {
   es: {
@@ -134,6 +134,81 @@ export const translations: Record<SupportedLanguage, Translation> = {
       "Este sitio puede mostrar anuncios de Google AdSense, que puede usar cookies para personalizar la publicidad según tu actividad de navegación.",
       "Además de Google AdSense, mostramos avisos propios de otros juegos de Boludeando y anuncios \"rewarded\" (a cambio de recompensas en el juego). Para esto enviamos a nuestro propio servidor (ads-api.boludeando.com) datos anónimos: un identificador de sesión generado en tu dispositivo (sin relación con tu identidad), tu país aproximado (por IP), tipo de dispositivo e idioma. No incluye nombre, email ni ningún dato que te identifique. Si elegís comprar la opción de sacarte los anuncios, el pago se procesa a través de MercadoPago; nosotros no recibimos ni guardamos los datos de tu tarjeta — eso queda entre vos y MercadoPago.",
       "Si tenés preguntas sobre esta política, podés contactarnos a boludeando.app@gmail.com.",
+    ],
+  },
+
+  en: {
+    home: "🏠 Home",
+    playMenu: "🎲 Play",
+    privacyPolicyLabel: "Privacy",
+    appName: "Tuttifrutalo",
+
+    tagline: "one letter · seven categories · against the clock",
+    greetingMorning: "Good morning ☀️",
+    greetingAfternoon: "Good afternoon 🌤️",
+    greetingEvening: "Good evening 🌙",
+    daysWithoutPlayingMessage: (days) => `it's been ${days} days since you last played`,
+    readyToPlay: "Ready to play Tuttifrutalo?",
+    playButton: "PLAY",
+    exampleRoundLabel: "Example round",
+    exampleRoundExplanation: "You get a random letter and complete all 7 categories starting with it before time runs out.",
+    removeAdsButton: "Remove ads",
+    removeAdsButtonBuying: "Redirecting to MercadoPago...",
+    whatIsTitle: "What is Tuttifrutalo?",
+    whatIsBody: "Tuttifrutalo is the classic Scattergories/Stop game. A random letter comes up and you have to complete one word per category starting with that letter before time runs out.",
+    howToPlayTitle: "How to play",
+    howToPlayBody: "Pick the round duration and tap Start. You'll get a letter: fill in Country, Color, Fruit, Animal, Name, Profession and Thing starting with that letter. Tap Stop! when you're done or wait for time to run out. Each valid answer scores 10 points plus 1 extra point per letter of the word.",
+    faqTitle: "Frequently asked questions",
+    faq: [
+      { q: "Is Tuttifrutalo free?", a: "Yes, playing Tuttifrutalo is completely free. The app runs on ads, you'll never have to pay to play." },
+      { q: "Do I need to create an account?", a: "No. Your record and the words you used are saved automatically on this device — no sign-up or login needed." },
+      { q: "How is each category scored?", a: "Each valid answer scores 10 points plus 1 extra point per letter of the word. Empty or invalid answers score nothing." },
+      { q: "What happens if I tap STOP before time runs out?", a: "If you don't have any invalid answers, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time you had left." },
+      { q: "What are the 7 categories?", a: "Country, Color, Fruits and Vegetables, Animal, Name, Profession and Thing, all starting with the same letter." },
+      { q: "Can I pick the letter to play with friends?", a: "Yes, if you want to set up a challenge with friends you can manually pick the letter instead of drawing it at random, so everyone fills in the categories with the same starting letter." },
+    ],
+    recordTitle: "Record",
+    recordEmptyBody: "You haven't played any rounds yet.",
+    recordBody: (score, letter) => `${score} points with the letter ${letter}`,
+    recordWordsLabel: "Words used",
+
+    letterInicialLabel: "Starting letter",
+    idleInstruction: "Complete the 7 categories with this letter before time runs out",
+    chooseLetterLabel: "Pick your letter for a challenge with friends using the same letter",
+    durationTitle: "Round duration",
+    durationLabel: "seconds",
+    scoringTitle: "How is it scored?",
+    scoringExplanation: "10 points for each category with a valid answer, plus 1 extra point per letter of the word. Empty or invalid answers score nothing. Also, if you don't have any invalid answers, tapping STOP with time to spare adds up to 30 bonus points, proportional to the time left.",
+    startButton: "Start!",
+
+    categoryLabels: {
+      pais: "Country",
+      color: "Color",
+      fruta: "Fruits and Vegetables",
+      animal: "Animal",
+      nombre: "Name",
+      profesion: "Profession",
+      cosa: "Thing",
+    },
+    bastaButton: "STOP!",
+
+    resultsTitle: "Results",
+    totalScoreLabel: "Total score",
+    timeBonusLabel: (bonus) => `includes +${bonus} time bonus`,
+    alternativesLabel: (count) => (count === 1 ? "there was 1 valid alternative" : `there were ${count} valid alternatives`),
+    sampleAlternativesLabel: (words) => `for example: ${words.join(", ")}`,
+    playAgainButton: "Play again",
+    backToHomeButton: "Back to home",
+    validLabel: "Valid",
+    invalidLabel: "Invalid",
+    emptyLabel: "Empty",
+
+    privacyTitle: "Privacy policy",
+    privacyBody: [
+      "Tuttifrutalo does not collect personal data. Your progress and records are stored only in your browser's local storage (localStorage) and are never sent to any server.",
+      "This site may show Google AdSense ads, which may use cookies to personalize advertising based on your browsing activity.",
+      "Besides Google AdSense, we show our own ads for other Boludeando games and \"rewarded\" ads (in exchange for in-game rewards). For this we send anonymous data to our own server (ads-api.boludeando.com): a session identifier generated on your device (not linked to your identity), your approximate country (by IP), device type, and language. It does not include your name, email, or any identifying data. If you choose to buy the ad-removal option, the payment is processed through MercadoPago; we do not receive or store your card details — that stays between you and MercadoPago.",
+      "If you have questions about this policy, you can contact us at boludeando.app@gmail.com.",
     ],
   },
 };

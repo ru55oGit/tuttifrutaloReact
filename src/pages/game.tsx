@@ -16,7 +16,7 @@ import HowToPlayCollapse from "../components/HowToPlayCollapse";
 import { useIsMobile } from "../hooks/useIsMobile";
 import { useLanguage } from "../i18n/LanguageContext";
 import { CATEGORIES, Category, isValidAnswer } from "../data/categoryWords";
-import { drawRandomLetter, scoreRound, RoundResult, PLAYABLE_LETTERS } from "../utils/tuttiEngine";
+import { drawRandomLetter, scoreRound, RoundResult, getPlayableLetters } from "../utils/tuttiEngine";
 import { maybeSaveBestScore } from "../utils/tuttiRecordState";
 import { recordLastPlayed } from "../utils/lastPlayedState";
 
@@ -52,7 +52,7 @@ export default function Game() {
 
   const [phase, setPhase] = useState<Phase>("config");
   const [duration, setDuration] = useState(60);
-  const [selectedLetter, setSelectedLetter] = useState<string>(() => drawRandomLetter());
+  const [selectedLetter, setSelectedLetter] = useState<string>(() => drawRandomLetter(currentLanguage));
   const [letter, setLetter] = useState("");
   const [answers, setAnswers] = useState<Record<Category, string>>(emptyAnswers());
   const [timeLeft, setTimeLeft] = useState(duration);
@@ -88,7 +88,7 @@ export default function Game() {
   }, [phase]);
 
   function finishRound(finalTimeLeft: number = timeLeftRef.current) {
-    const result = scoreRound(letterRef.current, answersRef.current, finalTimeLeft, duration);
+    const result = scoreRound(currentLanguage, letterRef.current, answersRef.current, finalTimeLeft, duration);
     setRoundResult(result);
     const words = result.results.filter((r) => r.answer).map((r) => r.answer);
     const saved = maybeSaveBestScore(currentLanguage, result.totalScore, letterRef.current, words);
@@ -110,7 +110,7 @@ export default function Game() {
   }
 
   function goToConfig() {
-    setSelectedLetter(drawRandomLetter());
+    setSelectedLetter(drawRandomLetter(currentLanguage));
     setPhase("config");
   }
 
@@ -132,7 +132,7 @@ export default function Game() {
     setFocusedCategory((prev) => (prev === category ? null : prev));
     const answer = answers[category].trim();
     if (!answer) return;
-    if (!isValidAnswer(category, letter, answer)) {
+    if (!isValidAnswer(currentLanguage, category, letter, answer)) {
       setInvalidFields((prev) => new Set(prev).add(category));
       playErrorSound();
     }
@@ -181,7 +181,7 @@ export default function Game() {
                   color: ACCENT,
                 }}
               >
-                {PLAYABLE_LETTERS.map((l) => (
+                {getPlayableLetters(currentLanguage).map((l) => (
                   <MenuItem key={l} value={l}>{l}</MenuItem>
                 ))}
               </Select>

@@ -12,7 +12,10 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const LANGUAGE_STORAGE_KEY = "tuttifrutalo_language";
 
-export const availableLanguages = [{ code: "es" as SupportedLanguage, name: "Español", flag: "🇦🇷" }];
+export const availableLanguages = [
+  { code: "es" as SupportedLanguage, name: "Español", flag: "🇦🇷" },
+  { code: "en" as SupportedLanguage, name: "English", flag: "🇺🇸" },
+];
 
 interface LanguageProviderProps {
   children: ReactNode;

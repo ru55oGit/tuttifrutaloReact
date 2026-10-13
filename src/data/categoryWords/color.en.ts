@@ -1,0 +1,27 @@
+import { WordsByLetter } from "./types";
+
+export const COLOR_WORDS_EN: WordsByLetter = {
+  A: ["Amber", "Aquamarine", "Apricot", "Auburn", "Almond", "Azure"],
+  B: ["Beige", "Black", "Blue", "Bronze", "Burgundy", "Brown"],
+  C: ["Coral", "Crimson", "Cyan", "Charcoal", "Chestnut", "Copper", "Cream", "Chocolate", "Cobalt"],
+  D: ["Denim"],
+  E: ["Emerald", "Ebony"],
+  F: ["Fuchsia"],
+  G: ["Gold", "Gray", "Grey", "Green"],
+  H: ["Hazel"],
+  I: ["Indigo", "Ivory"],
+  J: ["Jade"],
+  K: ["Khaki"],
+  L: ["Lavender", "Lilac", "Lime", "Lemon"],
+  M: ["Magenta", "Maroon", "Mauve", "Mint", "Mustard", "Mahogany"],
+  N: ["Navy"],
+  O: ["Olive", "Orange", "Onyx", "Ochre"],
+  P: ["Peach", "Pink", "Purple", "Plum", "Pearl", "Platinum"],
+  R: ["Red", "Rose", "Ruby", "Rust"],
+  S: ["Salmon", "Sapphire", "Scarlet", "Sienna", "Silver", "Slate"],
+  T: ["Tan", "Teal", "Turquoise", "Taupe"],
+  U: ["Ultramarine"],
+  V: ["Violet"],
+  W: ["White"],
+  Y: ["Yellow"],
+};

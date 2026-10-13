@@ -1,15 +1,32 @@
 import { Category, CATEGORIES, isValidAnswer, countAlternatives, getRandomAlternatives } from "../data/categoryWords";
+import { SupportedLanguage } from "../i18n/translations";
 
 // Letras que se excluyen del sorteo (muy pocas o ninguna palabra común por
-// categoría): igual que se juega habitualmente al Basta en la mesa.
-const EXCLUDED_LETTERS = new Set(["Ñ", "K", "Q", "W", "X"]);
+// categoría): igual que se juega habitualmente al Basta en la mesa. En
+// inglés el reparto de letras débiles es distinto al español (no hay Ñ, y
+// K/Q/W sí tienen cobertura razonable en la mayoría de las categorías —
+// ver pais.en.ts/color.en.ts/etc. — pero X prácticamente no tiene nada en
+// ninguna categoría curada).
+const EXCLUDED_LETTERS: Record<SupportedLanguage, Set<string>> = {
+  es: new Set(["Ñ", "K", "Q", "W", "X"]),
+  en: new Set(["X"]),
+};
 
-const FULL_ALPHABET = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+const FULL_ALPHABET_ES = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+const FULL_ALPHABET_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-export const PLAYABLE_LETTERS = FULL_ALPHABET.filter((letter) => !EXCLUDED_LETTERS.has(letter));
+export function getPlayableLetters(lang: SupportedLanguage): string[] {
+  const alphabet = lang === "es" ? FULL_ALPHABET_ES : FULL_ALPHABET_EN;
+  return alphabet.filter((letter) => !EXCLUDED_LETTERS[lang].has(letter));
+}
 
-export function drawRandomLetter(): string {
-  return PLAYABLE_LETTERS[Math.floor(Math.random() * PLAYABLE_LETTERS.length)];
+// Mantenido para quien ya lo use asumiendo español (el selector de letra en
+// game.tsx pide la lista por idioma con getPlayableLetters).
+export const PLAYABLE_LETTERS = getPlayableLetters("es");
+
+export function drawRandomLetter(lang: SupportedLanguage = "es"): string {
+  const letters = getPlayableLetters(lang);
+  return letters[Math.floor(Math.random() * letters.length)];
 }
 
 export type AnswerStatus = "valid" | "invalid" | "empty";
@@ -48,6 +65,7 @@ export function calculateTimeBonus(timeLeft: number, duration: number): number {
 }
 
 function buildResult(
+  lang: SupportedLanguage,
   category: Category,
   letter: string,
   answer: string,
@@ -57,7 +75,7 @@ function buildResult(
   if (!answer) {
     return { category, answer, status: "empty", points: POINTS_INVALID_OR_EMPTY, alternativesCount, sampleAlternatives };
   }
-  const valid = isValidAnswer(category, letter, answer);
+  const valid = isValidAnswer(lang, category, letter, answer);
   // +1 punto extra por cada letra de la palabra usada, además de los puntos base.
   const points = valid ? POINTS_VALID + answer.length : POINTS_INVALID_OR_EMPTY;
   return {
@@ -71,6 +89,7 @@ function buildResult(
 }
 
 export function scoreRound(
+  lang: SupportedLanguage,
   letter: string,
   answers: Record<Category, string>,
   timeLeft: number,
@@ -80,14 +99,14 @@ export function scoreRound(
   // reales), pero mostrar ese número al lado de las 2-20 alternativas de
   // las otras categorías queda raro. Se limita al máximo real de las demás
   // categorías de la ronda, solo para el número que se muestra.
-  const otherAlternatives = CATEGORIES.filter((c) => c !== "cosa").map((c) => countAlternatives(c, letter));
+  const otherAlternatives = CATEGORIES.filter((c) => c !== "cosa").map((c) => countAlternatives(lang, c, letter));
   const capForCosa = Math.max(...otherAlternatives);
 
   const results: CategoryResult[] = CATEGORIES.map((category) => {
     const answer = (answers[category] ?? "").trim();
-    const alternativesCount = category === "cosa" ? capForCosa : countAlternatives(category, letter);
-    const sampleAlternatives = getRandomAlternatives(category, letter, SAMPLE_ALTERNATIVES_COUNT);
-    return buildResult(category, letter, answer, alternativesCount, sampleAlternatives);
+    const alternativesCount = category === "cosa" ? capForCosa : countAlternatives(lang, category, letter);
+    const sampleAlternatives = getRandomAlternatives(lang, category, letter, SAMPLE_ALTERNATIVES_COUNT);
+    return buildResult(lang, category, letter, answer, alternativesCount, sampleAlternatives);
   });
 
   // El bonus premia terminar rápido y bien: si alguna respuesta es inválida

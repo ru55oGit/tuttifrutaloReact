@@ -1,0 +1,28 @@
+import { WordsByLetter } from "./types";
+
+export const ANIMAL_WORDS_EN: WordsByLetter = {
+  A: ["Ant", "Antelope", "Alligator", "Anaconda", "Armadillo"],
+  B: ["Bear", "Beaver", "Bee", "Bison", "Buffalo", "Butterfly", "Bat", "Bull"],
+  C: ["Cat", "Camel", "Cheetah", "Chimpanzee", "Cow", "Coyote", "Crab", "Crocodile", "Crow"],
+  D: ["Deer", "Dog", "Dolphin", "Donkey", "Dove", "Duck"],
+  E: ["Eagle", "Elephant", "Elk"],
+  F: ["Falcon", "Ferret", "Fish", "Flamingo", "Fox", "Frog"],
+  G: ["Giraffe", "Goat", "Goose", "Gorilla"],
+  H: ["Hamster", "Hare", "Hawk", "Hedgehog", "Hippopotamus", "Horse", "Hyena"],
+  I: ["Iguana"],
+  J: ["Jackal", "Jaguar", "Jellyfish"],
+  K: ["Kangaroo", "Koala"],
+  L: ["Lamb", "Leopard", "Lion", "Lizard", "Llama", "Lobster"],
+  M: ["Mole", "Monkey", "Moose", "Mosquito", "Mouse", "Mule"],
+  N: ["Narwhal", "Newt"],
+  O: ["Octopus", "Orca", "Ostrich", "Otter", "Owl", "Ox"],
+  P: ["Panda", "Parrot", "Peacock", "Penguin", "Pig", "Pigeon", "Pony", "Porcupine", "Puma"],
+  Q: ["Quail"],
+  R: ["Rabbit", "Raccoon", "Rat", "Rhinoceros", "Rooster"],
+  S: ["Salmon", "Scorpion", "Seal", "Shark", "Sheep", "Skunk", "Snail", "Snake", "Spider", "Squid", "Squirrel", "Swan"],
+  T: ["Tiger", "Toad", "Tortoise", "Turkey", "Turtle"],
+  V: ["Vulture"],
+  W: ["Walrus", "Wasp", "Whale", "Wolf", "Worm"],
+  Y: ["Yak"],
+  Z: ["Zebra"],
+};

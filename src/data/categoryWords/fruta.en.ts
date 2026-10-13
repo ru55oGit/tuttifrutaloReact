@@ -1,0 +1,25 @@
+import { WordsByLetter } from "./types";
+
+export const FRUTA_WORDS_EN: WordsByLetter = {
+  A: ["Apple", "Apricot", "Avocado", "Artichoke", "Asparagus", "Arugula"],
+  B: ["Banana", "Blueberry", "Blackberry", "Beet", "Broccoli", "Bell pepper"],
+  C: ["Cherry", "Coconut", "Cranberry", "Cantaloupe", "Carrot", "Cabbage", "Cauliflower", "Celery", "Corn", "Cucumber"],
+  D: ["Date", "Durian"],
+  E: ["Eggplant", "Endive"],
+  F: ["Fig"],
+  G: ["Grape", "Grapefruit", "Guava", "Garlic", "Ginger"],
+  H: ["Honeydew"],
+  J: ["Jackfruit"],
+  K: ["Kiwi", "Kale"],
+  L: ["Lemon", "Lime", "Lychee", "Lettuce", "Leek"],
+  M: ["Mango", "Melon", "Mandarin", "Mushroom"],
+  N: ["Nectarine"],
+  O: ["Orange", "Okra", "Onion"],
+  P: ["Papaya", "Peach", "Pear", "Pineapple", "Plum", "Pomegranate", "Pumpkin", "Potato", "Parsley", "Pea", "Pepper"],
+  Q: ["Quince"],
+  R: ["Raspberry", "Radish"],
+  S: ["Strawberry", "Spinach", "Squash", "Soybean"],
+  T: ["Tangerine", "Tomato", "Turnip"],
+  W: ["Watermelon"],
+  Z: ["Zucchini"],
+};
