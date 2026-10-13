@@ -11,6 +11,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { getBestScore, BestScore } from "../utils/tuttiRecordState";
 import { getDaysSinceLastPlayed } from "../utils/lastPlayedState";
 import { Category } from "../data/categoryWords";
+import { SupportedLanguage } from "../i18n/translations";
 import { markFromHub, cameFromHubBefore } from "../utils/hubOriginState";
 import { isAdFree, purchaseAdFree, syncAdFreeAfterReturn } from "../ads/adFreeEntitlement";
 import HouseAdBanner from "../ads/HouseAdBanner";
@@ -20,12 +21,23 @@ import ShareButtons from "../ads/ShareButtons";
 const ACCENT = "#e74c3c";
 const CARD_BG = "#eb6f62";
 
+// Misma letra V en los dos idiomas (coincide que funciona bien en ambos),
+// pero las respuestas de ejemplo tienen que ser palabras reales del idioma
+// activo — mostrar "Venezuela/Vaca/Verde" con la UI en inglés quedaba
+// confuso (2026-10-13).
 const EXAMPLE_LETTER = "V";
-const EXAMPLE_ENTRIES: { category: Category; answer: string }[] = [
-  { category: "pais", answer: "Venezuela" },
-  { category: "animal", answer: "Vaca" },
-  { category: "color", answer: "Verde" },
-];
+const EXAMPLE_ENTRIES: Record<SupportedLanguage, { category: Category; answer: string }[]> = {
+  es: [
+    { category: "pais", answer: "Venezuela" },
+    { category: "animal", answer: "Vaca" },
+    { category: "color", answer: "Verde" },
+  ],
+  en: [
+    { category: "pais", answer: "Venezuela" },
+    { category: "animal", answer: "Vulture" },
+    { category: "color", answer: "Violet" },
+  ],
+};
 
 const HUB_URL = "https://www.boludeando.com/";
 
@@ -165,7 +177,7 @@ export default function Home() {
               {EXAMPLE_LETTER}
             </Box>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center" }}>
-              {EXAMPLE_ENTRIES.map(({ category, answer }) => (
+              {EXAMPLE_ENTRIES[currentLanguage].map(({ category, answer }) => (
                 <Box
                   key={category}
                   sx={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "8px", border: "1px solid #e5e7eb", overflow: "hidden" }}
