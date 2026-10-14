@@ -1,0 +1,27 @@
+import { WordsByLetter } from "./types";
+
+export const NOMBRE_WORDS_PT: WordsByLetter = {
+  A: ["Alice", "Ana", "André", "Antônio", "Adriana", "Adriano", "Alexandre", "Aline", "Amanda", "Ana Clara", "Ana Luiza", "Augusto", "Aurora", "Arthur", "Ágatha"],
+  B: ["Beatriz", "Bernardo", "Bianca", "Breno", "Bruna", "Bruno"],
+  C: ["Caio", "Camila", "Carla", "Carlos", "Carolina", "Cecília", "Célia", "Cláudia", "Cláudio", "Cristiano", "Cristina"],
+  D: ["Daniel", "Daniela", "Danilo", "Davi", "Débora", "Diego", "Diogo", "Douglas"],
+  E: ["Eduardo", "Elaine", "Eliane", "Elisa", "Emanuel", "Emanuelle", "Enzo", "Erick", "Ester", "Eva"],
+  F: ["Fábio", "Felipe", "Fernanda", "Fernando", "Flávia", "Francisco", "Frederico"],
+  G: ["Gabriel", "Gabriela", "Geraldo", "Giovana", "Giovanni", "Guilherme", "Gustavo"],
+  H: ["Heitor", "Helena", "Henrique", "Hugo"],
+  I: ["Igor", "Inês", "Isabela", "Isabella", "Isadora", "Ivan", "Ivone"],
+  J: ["Jéssica", "João", "Joaquim", "Jorge", "José", "Juliana", "Júlio", "Júlia"],
+  K: ["Karina", "Kelly", "Kevin"],
+  L: ["Larissa", "Laura", "Leandro", "Leonardo", "Letícia", "Lívia", "Lorena", "Luan", "Lucas", "Luciana", "Luís", "Luiz", "Luíza"],
+  M: ["Manuela", "Marcela", "Marcelo", "Márcia", "Marco", "Marcos", "Maria", "Mariana", "Mariane", "Mário", "Matheus", "Maurício", "Melissa", "Miguel", "Murilo"],
+  N: ["Natália", "Nicolas", "Noah"],
+  O: ["Otávio"],
+  P: ["Patrícia", "Paulo", "Pedro", "Priscila"],
+  R: ["Rafael", "Rafaela", "Raquel", "Raul", "Renata", "Renato", "Ricardo", "Roberto", "Rodrigo", "Rosa", "Rosana"],
+  S: ["Samuel", "Sandra", "Sara", "Sérgio", "Sílvia", "Simone", "Sofia"],
+  T: ["Tatiana", "Teresa", "Thiago", "Tomás"],
+  U: ["Urbano"],
+  V: ["Valentina", "Valéria", "Vanessa", "Vicente", "Vinícius", "Vitor", "Vitória"],
+  W: ["Wagner", "Wellington", "Wesley"],
+  Y: ["Yago", "Yasmin"],
+};

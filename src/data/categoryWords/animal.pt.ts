@@ -1,0 +1,27 @@
+import { WordsByLetter } from "./types";
+
+export const ANIMAL_WORDS_PT: WordsByLetter = {
+  A: ["Abelha", "Águia", "Aranha", "Arara", "Ariranha", "Anta", "Avestruz", "Antílope", "Alce"],
+  B: ["Baleia", "Barata", "Besouro", "Bode", "Boi", "Borboleta", "Búfalo", "Bicho-preguiça", "Burro"],
+  C: ["Cabra", "Cachorro", "Camaleão", "Camelo", "Canário", "Cangurú", "Capivara", "Caranguejo", "Cavalo", "Cobra", "Coelho", "Coruja", "Corvo", "Cutia"],
+  D: ["Dromedário"],
+  E: ["Elefante", "Escorpião", "Esquilo"],
+  F: ["Falcão", "Flamingo", "Foca", "Formiga", "Furão"],
+  G: ["Gafanhoto", "Galinha", "Galo", "Gambá", "Ganso", "Garça", "Gato", "Gaivota", "Girafa", "Gorila"],
+  H: ["Hamster", "Hiena", "Hipopótamo"],
+  I: ["Iguana"],
+  J: ["Jabuti", "Jacaré", "Jaguar", "Javali", "Joaninha"],
+  K: ["Koala"],
+  L: ["Lagarta", "Lagarto", "Lagosta", "Leão", "Leopardo", "Lesma", "Libélula", "Lebre", "Lobo", "Lontra"],
+  M: ["Macaco", "Mico", "Minhoca", "Morcego", "Mosca", "Mosquito", "Mula"],
+  N: ["Narval"],
+  O: ["Onça", "Orangotango", "Osso", "Ovelha", "Ouriço"],
+  P: ["Pantera", "Papagaio", "Pato", "Pavão", "Pelicano", "Peixe", "Perereca", "Peru", "Pinguim", "Piranha", "Polvo", "Pomba", "Porco", "Porco-espinho", "Preguiça", "Pulga"],
+  Q: ["Quati"],
+  R: ["Rã", "Raposa", "Rato", "Rinoceronte", "Robalo"],
+  S: ["Sabiá", "Sapo", "Sagui", "Serpente", "Suçuarana"],
+  T: ["Tamanduá", "Tartaruga", "Tatu", "Tigre", "Tucano", "Tubarão"],
+  U: ["Urso", "Urubu", "Urutau"],
+  V: ["Vaca", "Veado", "Vespa", "Vaga-lume"],
+  Z: ["Zebra"],
+};

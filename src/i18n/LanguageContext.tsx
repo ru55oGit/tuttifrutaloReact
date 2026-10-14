@@ -15,6 +15,7 @@ const LANGUAGE_STORAGE_KEY = "tuttifrutalo_language";
 export const availableLanguages = [
   { code: "es" as SupportedLanguage, name: "Español", flag: "🇦🇷" },
   { code: "en" as SupportedLanguage, name: "English", flag: "🇺🇸" },
+  { code: "pt" as SupportedLanguage, name: "Português", flag: "🇧🇷" },
 ];
 
 interface LanguageProviderProps {

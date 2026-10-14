@@ -1,0 +1,26 @@
+import { WordsByLetter } from "./types";
+
+export const FRUTA_WORDS_PT: WordsByLetter = {
+  A: ["Abacate", "Abacaxi", "Abóbora", "Abobrinha", "Acerola", "Agrião", "Alcachofra", "Alface", "Alho", "Ameixa", "Amendoim", "Amora", "Aspargo"],
+  B: ["Banana", "Batata", "Batata-doce", "Beterraba", "Berinjela", "Brócolis"],
+  C: ["Caju", "Caqui", "Carambola", "Cará", "Cebola", "Cenoura", "Cereja", "Chuchu", "Coco", "Couve", "Couve-flor"],
+  D: ["Damasco"],
+  E: ["Ervilha", "Escarola", "Espinafre"],
+  F: ["Feijão", "Framboesa", "Figo"],
+  G: ["Goiaba", "Graviola", "Gengibre"],
+  H: ["Hortelã"],
+  I: ["Inhame"],
+  J: ["Jabuticaba", "Jaca", "Jiló"],
+  K: ["Kiwi"],
+  L: ["Laranja", "Limão", "Lentilha"],
+  M: ["Maçã", "Mamão", "Manga", "Mandioca", "Maracujá", "Melancia", "Melão", "Milho", "Morango", "Mostarda"],
+  N: ["Nabo", "Nectarina", "Noz"],
+  O: ["Okra", "Oliva"],
+  P: ["Pepino", "Pera", "Pêssego", "Pimentão", "Pinhão", "Pitanga"],
+  Q: ["Quiabo"],
+  R: ["Rabanete", "Repolho", "Romã"],
+  S: ["Salsão"],
+  T: ["Tangerina", "Tomate", "Toranja"],
+  U: ["Uva"],
+  V: ["Vagem"],
+};

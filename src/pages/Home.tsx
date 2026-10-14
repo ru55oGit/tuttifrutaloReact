@@ -37,6 +37,11 @@ const EXAMPLE_ENTRIES: Record<SupportedLanguage, { category: Category; answer: s
     { category: "animal", answer: "Vulture" },
     { category: "color", answer: "Violet" },
   ],
+  pt: [
+    { category: "pais", answer: "Venezuela" },
+    { category: "animal", answer: "Vaca" },
+    { category: "color", answer: "Verde" },
+  ],
 };
 
 const HUB_URL = "https://www.boludeando.com/";

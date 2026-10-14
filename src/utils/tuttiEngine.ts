@@ -6,17 +6,23 @@ import { SupportedLanguage } from "../i18n/translations";
 // inglés el reparto de letras débiles es distinto al español (no hay Ñ, y
 // K/Q/W sí tienen cobertura razonable en la mayoría de las categorías —
 // ver pais.en.ts/color.en.ts/etc. — pero X prácticamente no tiene nada en
-// ninguna categoría curada).
+// ninguna categoría curada). En portugués tampoco hay Ñ; K/Q/Z tienen
+// cobertura real en 3 de las 6 categorías curadas (ver pais.pt.ts/
+// fruta.pt.ts/animal.pt.ts/profesion.pt.ts) así que quedan jugables, pero
+// W/Y solo aparecen en nombre.pt.ts (3 y 2 palabras respectivamente) y X
+// no tiene ninguna palabra real en ninguna categoría.
 const EXCLUDED_LETTERS: Record<SupportedLanguage, Set<string>> = {
   es: new Set(["Ñ", "K", "Q", "W", "X"]),
   en: new Set(["X"]),
+  pt: new Set(["W", "X", "Y"]),
 };
 
 const FULL_ALPHABET_ES = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
 const FULL_ALPHABET_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const FULL_ALPHABET_PT = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 export function getPlayableLetters(lang: SupportedLanguage): string[] {
-  const alphabet = lang === "es" ? FULL_ALPHABET_ES : FULL_ALPHABET_EN;
+  const alphabet = lang === "es" ? FULL_ALPHABET_ES : lang === "pt" ? FULL_ALPHABET_PT : FULL_ALPHABET_EN;
   return alphabet.filter((letter) => !EXCLUDED_LETTERS[lang].has(letter));
 }
 

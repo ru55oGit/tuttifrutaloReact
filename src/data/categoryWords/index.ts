@@ -1,5 +1,6 @@
 import rawWordsEs from "an-array-of-spanish-words";
 import rawWordsEn from "an-array-of-english-words";
+import { PT_WORDS_FILTERED } from "./ptWordsFiltered";
 import { Category, CATEGORIES } from "./types";
 import { SupportedLanguage } from "../../i18n/translations";
 import { PAIS_WORDS } from "./pais";
@@ -14,6 +15,12 @@ import { FRUTA_WORDS_EN } from "./fruta.en";
 import { ANIMAL_WORDS_EN } from "./animal.en";
 import { NOMBRE_WORDS_EN } from "./nombre.en";
 import { PROFESION_WORDS_EN } from "./profesion.en";
+import { PAIS_WORDS_PT } from "./pais.pt";
+import { COLOR_WORDS_PT } from "./color.pt";
+import { FRUTA_WORDS_PT } from "./fruta.pt";
+import { ANIMAL_WORDS_PT } from "./animal.pt";
+import { NOMBRE_WORDS_PT } from "./nombre.pt";
+import { PROFESION_WORDS_PT } from "./profesion.pt";
 
 export type { Category } from "./types";
 export { CATEGORIES } from "./types";
@@ -39,17 +46,28 @@ const CATEGORY_WORDS_BY_LANG: Record<SupportedLanguage, Partial<Record<Category,
     nombre: NOMBRE_WORDS_EN,
     profesion: PROFESION_WORDS_EN,
   },
+  pt: {
+    pais: PAIS_WORDS_PT,
+    color: COLOR_WORDS_PT,
+    fruta: FRUTA_WORDS_PT,
+    animal: ANIMAL_WORDS_PT,
+    nombre: NOMBRE_WORDS_PT,
+    profesion: PROFESION_WORDS_PT,
+  },
 };
 
 // Mapa explícito en vez de NFD + strip de diacríticos: la Ñ no es una "N con
 // tilde" que haya que aplanar, es una letra propia del español (mismo criterio
 // que sopaloReact/src/utils/wordSearchGrid.ts).
 const ACCENT_FOLD: Record<string, string> = {
-  Á: "A", À: "A", Â: "A", Ä: "A",
+  Á: "A", À: "A", Â: "A", Ä: "A", Ã: "A",
   É: "E", È: "E", Ê: "E", Ë: "E",
   Í: "I", Ì: "I", Î: "I", Ï: "I",
-  Ó: "O", Ò: "O", Ô: "O", Ö: "O",
+  Ó: "O", Ò: "O", Ô: "O", Ö: "O", Õ: "O",
   Ú: "U", Ù: "U", Û: "U", Ü: "U",
+  // Ç no es una letra propia en portugués (a diferencia de la Ñ en español,
+  // ver comentario arriba) — es una variante de C que sí hay que aplanar.
+  Ç: "C",
 };
 
 export function normalizeAnswer(word: string): string {
@@ -60,6 +78,7 @@ export function normalizeAnswer(word: string): string {
 const VALIDATION_INDEX_BY_LANG: Record<SupportedLanguage, Map<string, Set<string>>> = {
   es: new Map(),
   en: new Map(),
+  pt: new Map(),
 };
 
 for (const lang of Object.keys(CATEGORY_WORDS_BY_LANG) as SupportedLanguage[]) {
@@ -80,6 +99,7 @@ for (const lang of Object.keys(CATEGORY_WORDS_BY_LANG) as SupportedLanguage[]) {
 const EXTRA_GENERIC_WORDS: Record<SupportedLanguage, string[]> = {
   es: ["wifi", "kiwi"],
   en: [],
+  pt: [],
 };
 
 function buildGenericWordsByLetter(rawWords: string[], extra: string[]): Map<string, Set<string>> {
@@ -97,6 +117,11 @@ function buildGenericWordsByLetter(rawWords: string[], extra: string[]): Map<str
 const GENERIC_WORDS_BY_LANG: Record<SupportedLanguage, Map<string, Set<string>>> = {
   es: buildGenericWordsByLetter(rawWordsEs as unknown as string[], EXTRA_GENERIC_WORDS.es),
   en: buildGenericWordsByLetter(rawWordsEn as unknown as string[], EXTRA_GENERIC_WORDS.en),
+  // PT_WORDS_FILTERED ya es la lista curada contra Hunspell pt-BR (ver su
+  // propio header) — no usamos el paquete npm an-array-of-portuguese-words
+  // crudo acá a propósito, resultó tener muchísimo ruido (ver commit que
+  // reemplazó el diccionario de Viborealo/Letris/Enganchalo en portugués).
+  pt: buildGenericWordsByLetter(PT_WORDS_FILTERED, EXTRA_GENERIC_WORDS.pt),
 };
 
 export function isValidAnswer(lang: SupportedLanguage, category: Category, letter: string, answer: string): boolean {

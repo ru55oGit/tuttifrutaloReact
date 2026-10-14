@@ -1,0 +1,25 @@
+import { WordsByLetter } from "./types";
+
+export const COLOR_WORDS_PT: WordsByLetter = {
+  A: ["Amarelo", "Âmbar", "Anil", "Amêndoa", "Aquamarinho", "Azul", "Azul-claro", "Azul-escuro", "Azul-marinho", "Azul-turquesa", "Areia"],
+  B: ["Bege", "Branco", "Bordô", "Borgonha", "Bronze"],
+  C: ["Canela", "Caramelo", "Carmesim", "Castanho", "Cáqui", "Celeste", "Cereja", "Chocolate", "Cinza", "Cinza-claro", "Cinza-escuro", "Cobre", "Coral", "Creme"],
+  D: ["Dourado"],
+  E: ["Esmeralda", "Escarlate", "Ébano"],
+  F: ["Fúcsia", "Ferrugem"],
+  G: ["Grafite"],
+  H: ["Havana"],
+  I: ["Índigo", "Índigo-azul", "Ivoire"],
+  J: ["Jade"],
+  L: ["Lavanda", "Lilás", "Limão", "Laranja"],
+  M: ["Magenta", "Marfim", "Marrom", "Mel", "Menta", "Musgo"],
+  N: ["Nácar", "Noz"],
+  O: ["Ocre", "Oliva", "Ouro", "Opala"],
+  P: ["Pérola", "Pêssego", "Prata", "Preto", "Púrpura"],
+  R: ["Rosa", "Rosa-choque", "Rosado", "Rubi", "Roxo", "Rosé"],
+  S: ["Salmão", "Safira"],
+  T: ["Tangerina", "Terracota", "Turquesa"],
+  U: ["Ultramarino", "Uva"],
+  V: ["Verde", "Verde-água", "Verde-claro", "Verde-escuro", "Verde-limão", "Vermelho", "Vinho", "Violeta"],
+  Z: ["Zinco"],
+};
