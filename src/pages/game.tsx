@@ -19,6 +19,7 @@ import { CATEGORIES, Category, isValidAnswer } from "../data/categoryWords";
 import { drawRandomLetter, scoreRound, RoundResult, getPlayableLetters } from "../utils/tuttiEngine";
 import { maybeSaveBestScore } from "../utils/tuttiRecordState";
 import { recordLastPlayed } from "../utils/lastPlayedState";
+import { track } from "../lib/analytics";
 
 function playErrorSound() {
   try {
@@ -94,6 +95,13 @@ export default function Game() {
     const saved = maybeSaveBestScore(currentLanguage, result.totalScore, letterRef.current, words);
     setIsNewRecord(Boolean(saved));
     setPhase("results");
+    // No hay "perder" acá: la ronda siempre termina en un resultado, por
+    // tiempo o apretando BASTA — se distingue con ended_by, no con reason.
+    track("level_complete", {
+      score: result.totalScore,
+      duration_sec: duration - finalTimeLeft,
+      ended_by: finalTimeLeft <= 0 ? "timeout" : "manual",
+    });
   }
 
   function startRound() {
@@ -107,6 +115,7 @@ export default function Game() {
     setInvalidFields(new Set());
     setKeyboardOpen(false);
     setPhase("playing");
+    track("game_start", { mode: String(duration), letter: selectedLetter });
   }
 
   function goToConfig() {
