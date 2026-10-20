@@ -27,6 +27,7 @@ export interface Translation {
   recordEmptyBody: string;
   recordBody: (score: number, letter: string) => string;
   recordWordsLabel: string;
+  shareRecordText: (score: number, letter: string) => string;
 
   // Game — config phase
   letterInicialLabel: string;
@@ -96,6 +97,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     recordEmptyBody: "Todavía no jugaste ninguna partida.",
     recordBody: (score, letter) => `${score} puntos con la letra ${letter}`,
     recordWordsLabel: "Palabras usadas",
+    shareRecordText: (score, letter) => `¡Mi récord en Tuttifrutalo es de ${score} puntos con la letra ${letter}! ¿Podés superarlo? 🍉`,
 
     letterInicialLabel: "Letra de inicio",
     idleInstruction: "Completá las 7 categorías con esta letra antes de que se acabe el tiempo",
@@ -171,6 +173,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     recordEmptyBody: "You haven't played any rounds yet.",
     recordBody: (score, letter) => `${score} points with the letter ${letter}`,
     recordWordsLabel: "Words used",
+    shareRecordText: (score, letter) => `My Tuttifrutalo record is ${score} points with the letter ${letter}! Can you beat it? 🍉`,
 
     letterInicialLabel: "Starting letter",
     idleInstruction: "Complete the 7 categories with this letter before time runs out",
@@ -246,6 +249,7 @@ export const translations: Record<SupportedLanguage, Translation> = {
     recordEmptyBody: "Você ainda não jogou nenhuma partida.",
     recordBody: (score, letter) => `${score} pontos com a letra ${letter}`,
     recordWordsLabel: "Palavras usadas",
+    shareRecordText: (score, letter) => `Meu recorde no Tuttifrutalo é de ${score} pontos com a letra ${letter}! Consegue superar? 🍉`,
 
     letterInicialLabel: "Letra inicial",
     idleInstruction: "Complete as 7 categorias com essa letra antes que o tempo acabe",
