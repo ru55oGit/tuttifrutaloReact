@@ -24,7 +24,7 @@ const CARD_BG = "#eb6f62";
 
 // Misma letra V en los dos idiomas (coincide que funciona bien en ambos),
 // pero las respuestas de ejemplo tienen que ser palabras reales del idioma
-// activo â mostrar "Venezuela/Vaca/Verde" con la UI en inglÃ©s quedaba
+// activo — mostrar "Venezuela/Vaca/Verde" con la UI en inglés quedaba
 // confuso (2026-10-13).
 const EXAMPLE_LETTER = "V";
 const EXAMPLE_ENTRIES: Record<SupportedLanguage, { category: Category; answer: string }[]> = {
@@ -45,8 +45,8 @@ const EXAMPLE_ENTRIES: Record<SupportedLanguage, { category: Category; answer: s
   ],
 };
 
-// UTM: distingue en GA4 del hub cuÃ¡nto trÃ¡fico de "volver" viene
-// especÃ­ficamente del header de este juego.
+// UTM: distingue en GA4 del hub cuánto tráfico de "volver" viene
+// específicamente del header de este juego.
 const HUB_URL = "https://www.boludeando.com/?utm_source=tuttifrutalo&utm_medium=cross_game&utm_campaign=header_back";
 
 function handleHubLinkClick() {
@@ -57,10 +57,6 @@ export default function Home() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, currentLanguage } = useLanguage();
-  // El idioma viaja hub→juego por query param al entrar; esto lo hace
-  // viajar también juego→hub al volver, para que no se pierda si el
-  // usuario lo cambió acá adentro.
-  const hubUrlWithLang = `${HUB_URL}&lang=${currentLanguage}`;
 
   const [adFree, setAdFree] = useState(false);
   const [buyingAdFree, setBuyingAdFree] = useState(false);
@@ -129,7 +125,7 @@ export default function Home() {
       }
       await navigator.share(shareData);
     } catch {
-      // CancelÃ³ el panel de compartir sin elegir nada.
+      // Canceló el panel de compartir sin elegir nada.
     } finally {
       setSharingRecord(false);
     }
@@ -148,14 +144,14 @@ export default function Home() {
       <AdsenseScript />
       {
         // Shell fijo a todo el ancho del viewport (sin estilo propio) que
-        // centra con flexbox el header real de 480px adentro â mÃ¡s robusto
+        // centra con flexbox el header real de 480px adentro — más robusto
         // que left:50%+transform. boxSizing:border-box en el header es
         // necesario para que el px:2 (padding) no se sume por fuera del
         // width:480px (encontrado en emojinaloReact: sin esto el header
-        // termina ~32px mÃ¡s ancho que la columna de contenido). Siempre
+        // termina ~32px más ancho que la columna de contenido). Siempre
         // visible (no solo viniendo del hub): con los shares de resultado,
         // alguien puede entrar directo a este juego sin haber pasado por
-        // boludeando.com antes, y necesita igual una forma de llegar ahÃ­.
+        // boludeando.com antes, y necesita igual una forma de llegar ahí.
       }
       <Box sx={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 10, display: "flex", justifyContent: "center" }}>
         <Box component="header" sx={{
@@ -167,14 +163,14 @@ export default function Home() {
           boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
           width: { xs: "100%", md: "480px" }, position: "relative",
         }}>
-          <Box component="a" href={hubUrlWithLang} onClick={handleHubLinkClick} aria-label="Volver" sx={{ display: "flex", alignItems: "center", zIndex: 1 }}>
+          <Box component="a" href={HUB_URL} onClick={handleHubLinkClick} aria-label="Volver" sx={{ display: "flex", alignItems: "center", zIndex: 1 }}>
             <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
               <path d="M26 6L14 19L26 32" stroke={ACCENT} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Box>
           <Box
             component="a"
-            href={hubUrlWithLang}
+            href={HUB_URL}
             onClick={handleHubLinkClick}
             sx={{
               position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)",
@@ -289,7 +285,7 @@ export default function Home() {
           </Box>
         )}
 
-        {/* RÃ©cord */}
+        {/* Récord */}
         <Box sx={{ borderRadius: "16px", backgroundColor: "#fff", p: 2, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
           <Typography sx={{ fontSize: 28, fontWeight: 800, color: "#222", mb: 0.5 }}>{t.recordTitle}</Typography>
           {record ? (
@@ -364,7 +360,7 @@ export default function Home() {
           />
         )}
 
-        {/* QuÃ© es */}
+        {/* Qué es */}
         <Box component="section" sx={{ backgroundColor: "rgba(0,0,0,0.18)", borderRadius: "24px", px: 2, py: 2.5 }}>
           <Typography variant="h5" sx={{ fontWeight: 800, color: "#fff", mb: 1 }}>
             {t.whatIsTitle}
@@ -372,7 +368,7 @@ export default function Home() {
           <Typography sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>{t.whatIsBody}</Typography>
         </Box>
 
-        {/* CÃ³mo jugar */}
+        {/* Cómo jugar */}
         <Box component="section" sx={{ backgroundColor: "rgba(0,0,0,0.18)", borderRadius: "24px", px: 2, py: 2.5 }}>
           <Typography variant="h5" sx={{ fontWeight: 800, color: "#fff", mb: 1 }}>
             {t.howToPlayTitle}
@@ -397,10 +393,10 @@ export default function Home() {
           </Box>
         </Box>
 
-        {/* Banner fijo "anunciÃ¡ acÃ¡" â no es un ad_slot real, nunca se
-            reemplaza por una campaÃ±a comprada. Siempre hay un lugar visible
+        {/* Banner fijo "anunciá acá" — no es un ad_slot real, nunca se
+            reemplaza por una campaña comprada. Siempre hay un lugar visible
             para que alguien descubra que puede anunciar, incluso si todos
-            los slots de verdad ya estÃ¡n vendidos. Reemplazado por el banner
+            los slots de verdad ya están vendidos. Reemplazado por el banner
             doble del hub (3 precios + URLs rotando) el 2026-10-10. */}
         {!adFree && (
           <>
