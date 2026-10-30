@@ -38,6 +38,23 @@ function playErrorSound() {
   } catch { /* audio not supported */ }
 }
 
+function playSuccessSound() {
+  try {
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.2);
+  } catch { /* audio not supported */ }
+}
+
 const ACCENT = "#e74c3c";
 const DURATION_OPTIONS = [60, 90];
 
@@ -62,6 +79,9 @@ export default function Game() {
   const [focusedCategory, setFocusedCategory] = useState<Category | null>(null);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [invalidFields, setInvalidFields] = useState<Set<Category>>(new Set());
+  const [soundEnabled, setSoundEnabled] = useState(
+    () => localStorage.getItem("tuttifrutalo_sound_enabled") !== "false",
+  );
 
   const answersRef = useRef(answers);
   answersRef.current = answers;
@@ -143,7 +163,9 @@ export default function Game() {
     if (!answer) return;
     if (!isValidAnswer(currentLanguage, category, letter, answer)) {
       setInvalidFields((prev) => new Set(prev).add(category));
-      playErrorSound();
+      if (soundEnabled) playErrorSound();
+    } else if (soundEnabled) {
+      playSuccessSound();
     }
   }
 
@@ -426,7 +448,20 @@ export default function Game() {
         </Button>
       </Box>
 
-      <VirtualKeyboard onKey={handleVirtualKey} open={keyboardOpen} gameSlug="tuttifrutalo" />
+      <VirtualKeyboard
+        onKey={handleVirtualKey}
+        soundEnabled={soundEnabled}
+        onSoundToggle={() => {
+          setSoundEnabled((prev) => {
+            const next = !prev;
+            localStorage.setItem("tuttifrutalo_sound_enabled", String(next));
+            return next;
+          });
+        }}
+        onClose={() => setKeyboardOpen(false)}
+        open={keyboardOpen}
+        gameSlug="tuttifrutalo"
+      />
     </Layout>
   );
 }
